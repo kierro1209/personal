@@ -99,23 +99,41 @@ footer a {
 }
 
 .skills-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .skill {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90px;
 }
 
-.skill img {
-  width: 50px;
-  height: 50px;
+
+.logo-circle {
+  width: 70px;
+  height: 70px;
+  background-color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   margin-bottom: 0.5rem;
+  transition: transform 0.2s ease;
+}
+
+.logo-circle:hover {
+  transform: scale(1.05);
+}
+
+.logo-circle img {
+  width: 40px;
+  height: 40px;
   object-fit: contain;
 }
+
 
