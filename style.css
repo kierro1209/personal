@@ -37,14 +37,6 @@ body {
   margin-bottom: 2rem;
 }
 
-.timeline-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-}
-
 .company-logo {
   width: 40px;
   height: 40px;
@@ -52,10 +44,37 @@ body {
   margin-top: 0.25rem;
 }
 
-.experience-content {
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.company-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-top: 0.25rem;
+  flex-shrink: 0;
+}
+
+/* New wrapper to hold the bar */
+.content-wrapper {
+  display: flex;
   border-left: 3px solid #0055a2;
   padding-left: 1rem;
 }
+
+.experience-content h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.experience-content p {
+  margin: 0.25rem 0 0;
+}
+
 
 .experience-content h3 {
   margin: 0;
