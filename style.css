@@ -1,0 +1,89 @@
+body {
+  font-family: 'Inter', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fdfdfd;
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+/* Hero */
+.hero {
+  text-align: center;
+  padding: 4rem 1rem;
+  background: linear-gradient(to right, #003262, #0055a2);
+  color: white;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  border: 4px solid white;
+}
+
+/* Timeline */
+.timeline {
+  padding: 3rem 2rem;
+  max-width: 700px;
+  margin: auto;
+}
+
+.timeline h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.timeline-item {
+  border-left: 3px solid #0055a2;
+  padding-left: 1rem;
+  margin-bottom: 2rem;
+}
+
+/* Projects */
+.projects {
+  padding: 3rem 2rem;
+  background-color: #f0f4f8;
+}
+
+.projects h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+.card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  background-color: #003262;
+  color: white;
+}
+footer a {
+  color: #ffc72c;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}

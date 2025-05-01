@@ -1,71 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Kiersten Roth</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header>
-    <h1>Kiersten Roth</h1>
-    <p>Data Science @ UCLA | Builder & Problem-Solver</p>
-    <nav>
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="resume.pdf" target="_blank">Resume</a>
-    </nav>
-  </header>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <p>
-      I'm a UCLA student passionate about applying data science and machine learning to solve real-world problems.
-      I have experience in start-up consulting, web development, computational biology, and full-stack dev.
-    </p>
+  <!-- Hero / Greeting -->
+  <section class="hero">
+    <img src="images/you.jpg" alt="Kiersten Roth" class="profile-pic">
+    <h1>Hi, I'm Kiersten</h1>
+    <p>Data Science @ UCLA · Builder · Problem Solver</p>
   </section>
 
-  <section id="experience">
-    <h2>Experience & Involvement</h2>
-    <ul>
-      <li><strong>Data Science Union (DSU)</strong> – Data Analyst</li>
-      <li><strong>VEST</strong> – Software Engineer + Head of Content</li>
-      <li><strong>ACM AI</strong> – Member, transformer model tuning project</li>
-      <li><strong>Bruin Sports Analytics</strong> – ML Researcher, Data Journalism</li>
-    </ul>
+  <!-- Timeline / Experience -->
+  <section class="timeline">
+    <h2>Experience</h2>
+    <div class="timeline-item">
+      <h3>VEST</h3>
+      <p>Software Engineer & Head of Content · Leading content strategy, re-designing websites, creating cool stuff</p>
+    </div>
+    <div class="timeline-item">
+      <h3>Data Science Union</h3>
+      <p>Data Analyst · Currently in curriculum, will work on internal and company projects soon</p>
+    </div>
+    <div class="timeline-item">
+      <h3>ACM AI</h3>
+      <p>Member · Transformer model tuning project</p>
+    </div>
+    <div class="timeline-item">
+      <h3>Bruin Sports Analytics</h3>
+      <p>ML Researcher and Data Journalist · Published data journalism & NBA performance modelling</p>
+    </div>
   </section>
 
-  <section id="projects">
+  <!-- Project Cards -->
+  <section class="projects">
     <h2>Projects</h2>
-    <ul>
-      <li><strong>MRI Segmentation Model</strong> – Segment Brain tumors using Unet Model</li>
-      <li><strong>ACM AI, tuning transformers
+    <div class="card-grid">
+      <div class="card">
+        <h3>MRI Segmentation Model</h3>
+        <p>Working to integrate interactive tumor segmentation analytics with computer vision.</p>
+      </div>
+      <div class="card">
+        <h3>Transformer Tuning</h3>
+        <p>Fine-tuned transformers (LORA, RAG).</p>
+      </div>
+      <div class="card">
+        <h3>Predicting the NBA Draft</h3>
+        <p>Analyzed team performance for publication.</p>
+      </div>
+    </div>
+  </section>
 
-        <section id="projects">
-          <h2>Projects</h2>
-          <div class="card-grid">
-            <div class="card">
-              <h3>FastAPI + Supabase</h3>
-              <p>Built a backend for handling users, assignments, and submissions.</p>
-            </div>
-            <div class="card">
-              <h3>Transformer Tuning</h3>
-              <p>Worked on fine-tuning transformer models in ACM AI’s project group.</p>
-            </div>
-            <div class="card">
-              <h3>Sports Analytics Report</h3>
-              <p>Published a performance analysis with Bruin Sports Analytics.</p>
-            </div>
-          </div>
-        </section>
+  <footer>
+    <p>Connect: 
+      <a href="https://github.com/kierroth1209">GitHub</a> | 
+      <a href="https://www.linkedin.com/in/kiersten-roth-017932326/">LinkedIn</a>
+    </p>
+  </footer>
 
-        <header class="hero">
-          <h1>Kiersten Roth</h1>
-          <p>UCLA Data Science · Builder · Learner</p>
-          <div class="social-links">
-            <a href="https://github.com/kierroth12">GitHub</a> |
-            <a href="https://www.linkedin.com/in/kiersten-roth-017932326/">LinkedIn</a>
-          </div>
-        </header>
-        
+</body>
+</html>
