@@ -38,10 +38,34 @@ body {
 }
 
 .timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.company-logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  margin-top: 0.25rem;
+}
+
+.experience-content {
   border-left: 3px solid #0055a2;
   padding-left: 1rem;
-  margin-bottom: 2rem;
 }
+
+.experience-content h3 {
+  margin: 0;
+  font-weight: 600;
+}
+
+.experience-content p {
+  margin: 0.25rem 0 0;
+}
+
 
 /* Projects */
 .projects {
