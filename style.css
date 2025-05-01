@@ -87,3 +87,35 @@ footer a {
   text-decoration: none;
   margin: 0 0.5rem;
 }
+
+.skills {
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.skills h2 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.skill {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90px;
+}
+
+.skill img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 0.5rem;
+  object-fit: contain;
+}
+
