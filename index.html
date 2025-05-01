@@ -1,66 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Kiersten Roth</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="responsive.css">
 </head>
+
 <body>
+    <!-- Navbar header section -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="logo">
+                <h2 class="logo-heading">Kiersten Roth</h2>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <i class="fas fa-bars hamburger-icon"></i>
+                <i class="fas fa-times cross-icon"></i>
+            </div>
+            <div class="menu">
+                <ul class="menu-list">
+                    <li class="menu-list-items">
+                        <a class="links" href="#home">
+                            Home</a>
+                    </li>
+                    <li class="menu-list-items">
+                        <a class="links" href="#portfolio">
+                            Projects</a>
+                    </li>
+                    <li class="menu-list-items">
+                        <a class="links" href="#about">
+                            About </a>
+                    </li>
+                    <li class="menu-list-items">
+                        <a class="links" href="#services">
+                            Experiences </a>
+                    </li>
+                    <li class="menu-list-items">
+                        <a class="links" href="#contact"> Contact Me
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- Main hero banner -->
+    <section id="home" class="hero">
+        <div class="intro">
+            <div class="headings">
+                <h3 class="greet-heading">Hello, I'm</h3>
+                <h1 class="my-heading">Kiersten</h1>
+                <h4 class="sub-heading">
+                    Data Science and Bioinformatics Student at UCLA
+                </h4>
+            </div>
+            <div class="intro-buttons">
+                <button class="btn common-btn">Hire Me</button>
+                <button class="btn ghost-btn">Get Resume</button>
+            </div>
+        </div>
+    </section>
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="portfolio-heading">
+            <h1 class="my-heading text-center">Featured Portfolio</h1>
+        </div>
+        <div class="portfolio-content">
+            <div class="my-row">
+                <div class="my-col">
+                    <div class="my-card port-card">
+                        <div class="image">
+                            <img src="./Images/designImage2.avif" alt="Web Design Image">
+                        </div>
+                        <h3 class="greet-heading blue-text">Web Design</h3>
+                        <p class="small-para blue-text">Designing</p>
+                    </div>
+                </div>
+                <div class="my-col">
+                    <div class="my-card port-card">
+                        <div class="image">
+                            <img src="./Images/webDevelopment2.avif" alt="Web Development Image">
+                        </div>
+                        <h3 class="greet-heading blue-text">
+                            Web Development
+                        </h3>
+                        <p class="small-para blue-text">Development</p>
+                    </div>
+                </div>
+                <div class="my-col">
+                    <div class="my-card port-card">
+                        <div class="image">
+                            <img src="./Images/SEOImage2.avif" alt="SEO Image">
+                        </div>
+                        <h3 class="greet-heading blue-text">SEO</h3>
+                        <p class="small-para blue-text">Optimization</p>
+                    </div>
+                </div>
+            </div>
+            <div class="my-row">
+                <div class="my-col">
+                    <div class="my-card port-card">
+                        <div class="image">
+                            <img src="./Images/contentImage2.avif" alt="Content Writting Image">
+                        </div>
+                        <h3 class="greet-heading blue-text">
+                            Content Writing
+                        </h3>
+                        <p class="small-para blue-text">Writing</p>
+                    </div>
+                </div>
+                <div class="my-col">
+                    <div class="my-card port-card">
+                        <div class="image">
+                            <img src="./Images/wordpressImage2.avif" alt="Wordpress Image">
+                        </div>
+                        <h3 class="greet-heading blue-text">
+                            Wordpress Dev
+                        </h3>
+                        <p class="small-para blue-text">
+                            Content Management System
+                        </p>
+                    </div>
+                </div>
+                <div class="my-col">
+                    <div class="my-card port-card">
+                        <div class="image">
+                            <img src="./Images/videoEditing2.avif" alt="Video Editing Image">
+                        </div>
+                        <h3 class="greet-heading blue-text">
+                            Video Editing
+                        </h3>
+                        <p class="small-para blue-text">Editing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-text">
+            <h1 class="my-heading">About Me</h1>
+            <p class="lead-para">
+                I'm an ambitious and motivated student interested in startups, biotech, computational biology research, 
+                AI, and most of all data. I have experience in startup consulting, data analytics, model training, and computational
+                biology. In my free time, I love matcha, exploring cities, music, and travelling.
+            </p>
+        </div>
+        <div class="about-image">
+            <img src="IMG_9129.JPG" alt="About Image">
+        </div>
+    </section>
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="services-heading">
+            <h1 class="my-heading text-center">My Services</h1>
+        </div>
+        <div class="services-content">
+            <div class="my-row">
+                <div class="my-col">
+                    <div class="my-card">
+                        <div class="icon">
+                            <i class="fas fa-paint-brush"></i>
+                        </div>
+                        <h3 class="greet-heading blue-text">Web Design</h3>
+                        <p class="small-para">
+                            Create custom websites for all of your business and personal needs.
+                        </p>
+                    </div>
+                </div>
+                <div class="my-col">
+                    <div class="my-card">
+                        <div class="icon">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h3 class="greet-heading blue-text">
+                            Recruitment Consulting
+                        </h3>
+                        <p class="small-para">
+                            Using machine learning and data science techniques, I tailor 
+                            reports for you about who you should hire/recruit for your organization goals.
+                        </p>
+                    </div>
+                </div>
+                <div class="my-col">
+                    <div class="my-card">
+                        <div class="icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <h3 class="greet-heading blue-text">Management</h3>
+                        <p class="small-para">
+                            I have experience running 3 clubs as well as being a 2 time club founder in college.
+                            From these, I gained experience in people-first leadership, effective org structures, and proper work allocation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="my-row">
+                <div class="my-col">
+                    <div class="my-card">
+                        <div class="icon">
+                            <i class="fas fa-quote-left"></i>
+                        </div>
+                        <h3 class="greet-heading blue-text">
+                            Software Development
+                        </h3>
+                        <p class="small-para">
+                           Build internal tools for your that automate your work and save you time.
+                        </p>
+                    </div>
+                </div>
+    <!-- Contact me section -->
+    <section class="contact" id="contact">
+        <div class="contact-heading">
+            <h1 class="my-heading text-center">Contact Me</h1>
+        </div>
+        <div class="contact-content">
+            <div class="contact-form-container">
+                <h1 class="greet-heading">Get In Touch</h1>
+                <form class="contact-form">
+                    <input class="form-controls" type="text" placeholder="Your Name">
+                    <input class="form-controls" type="text" placeholder="Your Email">
+                    <input class="form-controls" type="text" placeholder="Your Phone">
+                    <textarea class="form-controls" placeholder="Write your message" name="message" id="" cols="30"
+                        rows="10">
+                      </textarea>
+                    <input class="form-btn btn common-btn" type="submit" value="Send Message">
+                </form>
+            </div>
+            <div class="contact-details">
+                <h1 class="greet-heading">My Contact Details</h1>
+                <div class="details">
+                    <h5 class="contact-heading">EMAIL</h5>
+                    <p class="contact-text">kierroth12@gmail.com</p>
+                </div>
+                <div class="details">
+                    <h5 class="contact-heading">GITHUB</h5>
+                    <p class="contact-text">https://github.io/kierro1209</p>
+                </div>
+                <div class="details">
+                    <h5 class="contact-heading">TWITTER</h5>
+                    <p class="contact-text">@kierroth09</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer section -->
+    <footer class="footer">
+        <div class="footer-content text-center">
+            <h4>
+                Copyright © 2023 All rights reserved |
+                This portfolio website template is created
+                by GeeksforGeeks.
+            </h4>
+            <div class="social-links">
+                <div class="footer-menu">
+                    <ul class="footer-menu-list">
+                        <li class="footer-list-items">
+                            <a class="footer-links" href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+                        <li class="footer-list-items">
+                            <a class="footer-links" href="#">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </li>
+                        <li class="footer-list-items">
+                            <a class="footer-links" href="#">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </li>
+                        <li class="footer-list-items">
+                            <a class="footer-links" href="#">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-  <!-- Hero / Greeting -->
-  <section class="hero">
-    <img src="images/you.jpg" alt="Kiersten Roth" class="profile-pic">
-    <h1>Hi, I'm Kiersten</h1>
-    <p>Data Science @ UCLA · Builder · Problem Solver</p>
-  </section>
-
-  <!-- Timeline / Experience -->
-  <section class="timeline">
-    <h2>Experience</h2>
-    <div class="timeline-item">
-      <h3>VEST</h3>
-      <p>Software Engineer & Head of Content · Leading content strategy, re-designing websites, creating cool stuff</p>
-    </div>
-    <div class="timeline-item">
-      <h3>Data Science Union</h3>
-      <p>Data Analyst · Currently in curriculum, will work on internal and company projects soon</p>
-    </div>
-    <div class="timeline-item">
-      <h3>ACM AI</h3>
-      <p>Member · Transformer model tuning project</p>
-    </div>
-    <div class="timeline-item">
-      <h3>Bruin Sports Analytics</h3>
-      <p>ML Researcher and Data Journalist · Published data journalism & NBA performance modelling</p>
-    </div>
-  </section>
-
-  <!-- Project Cards -->
-  <section class="projects">
-    <h2>Projects</h2>
-    <div class="card-grid">
-      <div class="card">
-        <h3>MRI Segmentation Model</h3>
-        <p>Working to integrate interactive tumor segmentation analytics with computer vision.</p>
-      </div>
-      <div class="card">
-        <h3>Transformer Tuning</h3>
-        <p>Fine-tuned transformers (LORA, RAG).</p>
-      </div>
-      <div class="card">
-        <h3>Predicting the NBA Draft</h3>
-        <p>Analyzed team performance for publication.</p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    <p>Connect: 
-      <a href="https://github.com/kierroth1209">GitHub</a> | 
-      <a href="https://www.linkedin.com/in/kiersten-roth-017932326/">LinkedIn</a>
-    </p>
-  </footer>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"
+        integrity="sha512-uKQ39gEGiyUJl4AI6L+ekBdGKpGw4xJ55+xyJG7YFlJokPNYegn9KwQ3P8A7aFQAUtUsAQHep+d/lrGqrbPIDQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+        </script>
+    <script src="script.js"></script>
 </body>
+
 </html>
