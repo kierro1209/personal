@@ -15,8 +15,8 @@ const DATA = {
   bio: `UCLA Statistics & Data Science. I have experience in startup consulting, biostatistics research, and full-stack development. I'm passionate about the health, tech, and startup space!`,
   aboutParagraph:
     `Outside of academics and work, I enjoy photography, journalling, working out, and discovering new coffee spots. Currently, I'm exploring film photography and my favorite cofee spots are Stagger, Five07, and Tadaima!`,
-  resumeUrl: "#", // replace with your resume link
-  email: "kiersten@example.com",
+  resumeUrl: "https://drive.google.com/file/d/10Z0h1gGIpBGuHCw0XNdRyRusIijsstrB/view?usp=sharing", // replace with your resume link
+  email: "kierroth12@g.ucla.edu",
   socials: {
     github: "https://github.com/kierro1209",
     linkedin: "https://www.linkedin.com/in/kiersten-roth/",
@@ -90,8 +90,8 @@ const DATA = {
       title: "Greenopia Data Redesign & App",
       blurb:
         "Reorganized entire database of 300k+ businesses, led data engineering effors, building web scraping pipelines to enrich 30k+ business's data, built frontend pages of web app, collaborated on data strategy with executive leadership.",
-      tech: ["Python", "Firebase", "Sheets", "Pandas", "React"],
-      links: { live: "#", repo: "#" },
+      tech: ["Firebase", "Sheets", "Pandas", "React"],
+      links: { live: "", repo: "" },
       logo: "/logos/greenopia.png", // small assoc logo bottom-right (optional)
     },
     {
@@ -99,7 +99,7 @@ const DATA = {
       blurb:
         "Coming Nov 2025! Playlist recommender that mixes user tastes with weather/context signals and embeddings.",
       tech: ["Python", "XGBoost", "Spotify API", "Redis"],
-      links: { live: "#", repo: "https://github.com/kierro1209/weather_daylist" },
+      links: { live: "", repo: "https://github.com/kierro1209/weather_daylist" },
       logo: "/logos/dsu-logo.png",
     },
     {
@@ -107,15 +107,15 @@ const DATA = {
       blurb:
         "Medical imaging toolkit: U-Net inference with a React analytics dashboard for clinicians.",
       tech: ["PyTorch", "React", "FastAPI"],
-      links: { live: "#", repo: "https://github.com/kierro1209/br.ai.n" },
-      logo: null,
+      links: { live: "", repo: "https://github.com/kierro1209/br.ai.n" },
+      logo: '',
     },
     {
       title: "Lookbk Content Automation App",
       blurb:
         "Create short-form videos using keywords and reactions. I designed the stitching feature.",
       tech: ["RunwayML", "MoviePy", "FastAPI"],
-      links: { live: "#", repo: "#" },
+      links: { live: "", repo: "" },
       logo: "/logos/VEST-Logo.PNG",
     }
 
@@ -211,64 +211,71 @@ export default function Portfolio() {
       <main className="mx-auto max-w-6xl px-4">
   {/* Hero */}
   <section className="py-14 md:py-20">
-    <div className="grid items-center gap-10 md:grid-cols-2">
-      {/* Left: text + one-line links */}
-      <div>
-        <h1 className="font-display text-5xl font-bold">{DATA.headline}</h1>
-        <h2 className="mt-2 font-display text-xl text-slate-700 dark:text-slate-300">
-          {DATA.title}
-        </h2>
-        <p className="mt-4 max-w-2xl text-slate-600 dark:text-slate-300">
-          {DATA.bio}
-        </p>
+  <div className="grid gap-10 md:grid-cols-[1.4fr_1fr] items-center">
+    {/* LEFT: text + bio + links */}
+    <div>
+      <h1 className="font-display text-5xl md:text-6xl font-bold">
+        {DATA.headline}
+      </h1>
+      <h2 className="mt-2 font-display text-xl text-slate-400">
+        {DATA.title}
+      </h2>
+      <p className="mt-4 max-w-2xl text-slate-300">
+        {DATA.bio}
+      </p>
 
-        {/* one-line CTA row */}
-        <div className="mt-5 flex items-center gap-4 whitespace-nowrap overflow-x-auto">
-          <a
-            href={DATA.resumeUrl}
-            className="inline-flex items-center gap-2 text-sm underline"
-          >
-            <FileText className="size-4" /> Resume
-          </a>
-          <a
-            href={`mailto:${DATA.email}`}
-            className="inline-flex items-center gap-2 text-sm"
-            title={DATA.email}
-          >
-            <Mail className="size-4" /> Email
-          </a>
-          <a
-            href={DATA.socials.github}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 text-sm"
-          >
-            <Github className="size-4" /> GitHub
-          </a>
-          <a
-            href={DATA.socials.linkedin}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 text-sm"
-          >
-            <Linkedin className="size-4" /> LinkedIn
-          </a>
-        </div>
+      {/* link row */}
+      <div className="mt-6 flex items-center gap-3 flex-wrap">
+        <a
+          href={DATA.resumeUrl}
+          className="inline-flex items-center gap-2 rounded-xl bg-red-700 px-4 py-2 text-white text-sm font-medium shadow-sm hover:bg-red-600"
+        >
+          <FileText className="size-4" /> Resume
+        </a>
+        <a
+          href={`mailto:${DATA.email}`}
+          className="inline-flex items-center gap-2 rounded-xl border border-slate-600 px-4 py-2 text-sm font-medium hover:bg-slate-800"
+        >
+          <Mail className="size-4" /> Email
+        </a>
+        <a
+          href={DATA.socials.github}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 text-sm"
+        >
+          <Github className="size-4" /> GitHub
+        </a>
+        <a
+          href={DATA.socials.linkedin}
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 text-sm"
+        >
+          <Linkedin className="size-4" /> LinkedIn
+        </a>
       </div>
 
-      {/* Right: photo, fixed spot that won’t push layout */}
-      <div className="relative mx-auto w-full max-w-[320px] md:max-w-[380px]">
-        <div className="aspect-square overflow-hidden rounded-3xl shadow-lg ring-1 ring-slate-200 dark:ring-slate-800">
-          {/* Replace /headshot.jpg with your actual file */}
-          <img
-            src="/IMG_0249.jpg"
-            alt="Kiersten Roth"
-            className="h-full w-full object-cover"
-          />
-        </div>
+      {/* location BELOW the links */}
+      <div className="mt-3 flex items-center gap-2 text-sm text-slate-400">
+        <MapPin className="size-4" />
+        {DATA.location}
       </div>
     </div>
-  </section>
+
+    {/* RIGHT: photo */}
+    <div className="relative md:justify-self-end w-full max-w-[360px]">
+      <div className="aspect-[4/5] overflow-hidden rounded-3xl shadow-lg ring-1 ring-slate-700/50">
+        <img
+          src="/IMG_0249.jpg" // replace with your actual file
+          alt="Kiersten Roth"
+          className="h-full w-full object-cover"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
         {/* About (paragraph + long cards for education & experience) */}
         <section id="about" className="py-10 md:py-14">
           <h2 className="font-display text-2xl md:text-3xl font-semibold tracking-tight">About</h2>
@@ -306,7 +313,7 @@ export default function Portfolio() {
           <SectionHeader title="Articles & Publications" />
           <div className="mt-6 flex flex-col gap-4">
             {DATA.articles.map((a) => (
-              <LongCard key={a.title} logo={a.logo} title={a.title} body={a.blurb} rightTag="Publication" />
+              <LongCard key={a.title} logo={a.logo} title={a.title} body={a.blurb} link = {a.link} rightTag="Publication" />
             ))}
           </div>
         </section>
@@ -344,21 +351,55 @@ function SectionHeader({ title }: { title: string }) {
   );
 }
 
-function LongCard({ logo, title, subtitle, rightTag, body }: { logo?: string; title: string; subtitle?: string; rightTag?: string; body?: string }) {
+function LongCard({ logo, title, subtitle, rightTag, body, link }: { logo?: string; title: string; subtitle?: string; rightTag?: string; body?: string, link?:string }) {
   return (
     <div className="relative flex gap-4 items-start rounded-2xl border border-slate-200 p-4 dark:border-slate-800 bg-slate-50 dark:bg-slate-900">
+      {/* Logo */}
       <div className="h-14 w-14 rounded-xl overflow-hidden grid place-items-center bg-slate-100 dark:bg-slate-800 shrink-0">
-        {logo ? <img src={logo} alt="logo" className="h-full w-full object-contain" /> : <div className="text-xs text-slate-500">Logo</div>}
+        {logo ? (
+          <img src={logo} alt="logo" className="h-full w-full object-contain" />
+        ) : (
+          <div className="text-xs text-slate-500">Logo</div>
+        )}
       </div>
+
+      {/* Content */}
       <div className="flex-1">
         <div className="flex items-start justify-between gap-3">
           <div>
             <div className="font-medium">{title}</div>
-            {subtitle && <div className="text-sm text-slate-500 dark:text-slate-400">{subtitle}</div>}
+            {subtitle && (
+              <div className="text-sm text-slate-500 dark:text-slate-400">
+                {subtitle}
+              </div>
+            )}
           </div>
-          {rightTag && <span className="text-xs rounded-full border border-slate-200 px-2 py-0.5 dark:border-slate-700">{rightTag}</span>}
+          {rightTag && (
+            <span className="text-xs rounded-full border border-slate-200 px-2 py-0.5 dark:border-slate-700">
+              {rightTag}
+            </span>
+          )}
         </div>
-        {body && <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">{body}</p>}
+
+        {body && (
+          <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">
+            {body}
+          </p>
+        )}
+
+        {/* Optional link */}
+        {link && (
+          <div className="mt-2">
+            <a
+              href={link}
+              target="_blank"
+              rel="noreferrer"
+              className="text-sm underline text-red-700 dark:text-red-400 hover:opacity-80"
+            >
+              Read more →
+            </a>
+          </div>
+        )}
       </div>
     </div>
   );
