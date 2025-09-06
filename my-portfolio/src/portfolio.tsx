@@ -16,7 +16,7 @@ const DATA = {
   headline: "Hi, I'm Kiersten",
   title: "Portfolio",
   location: "Los Angeles, CA",
-  bio: `UCLA Statistics & Data Science. I have experience in startup consulting, biostatistics research, and full-stack development. Because of my love for photography, I also enjoy social media management and marketing roles which I am in for a couple organizations. I'm passionate about tech and healthcare, and I enjoy working in the startup space as well. I love building communities, products, and innovations that bring people together.`,
+  bio: `I'm a UCLA student studying Data Science with concentrations in CS and bioinformatics. I have experience in startup consulting, computational biology research, org leadership, and social media management. My love for photography and digital media has led me to pursue some marketing roles recreationally in my schools organizations. I love tech, healthcare, and the start up space. I'm looking to be a Data Engineer or Data Scientist when I graduate. Nice to meet you!`,
   aboutParagraph:
     `Outside of academics and work, I enjoy photography, journalling, working out, and discovering new coffee spots. Currently, I'm exploring film photography and my favorite cofee spots are Stagger, Five07, and Tadaima!`,
   resumeUrl: "https://drive.google.com/file/d/10Z0h1gGIpBGuHCw0XNdRyRusIijsstrB/view?usp=sharing", // replace with your resume link
