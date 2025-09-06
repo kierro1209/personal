@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]   # or your default branch
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
@@ -18,12 +18,11 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-
-      - run: npm ci
-      - run: npm run build
+      - run: npm install              # <-- use install (not ci) if no lockfile
+      - run: npm run build            # must exist in package.json ("build": "vite build")
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: dist
+          path: dist                  # Vite output
   deploy:
     needs: build
     runs-on: ubuntu-latest
