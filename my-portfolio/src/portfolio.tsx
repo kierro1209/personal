@@ -7,6 +7,10 @@ import { motion } from "framer-motion";
 // - Dark mode toggle
 // - Edit the DATA object below
 
+const BASE = import.meta.env.BASE_URL;
+const asset = (p?: string) =>
+  p ? (p.startsWith("http") ? p : `${BASE}${p.replace(/^\/+/, "")}`) : "";
+
 const DATA = {
   name: "Kiersten Roth",
   headline: "Hi, I'm Kiersten",
@@ -25,7 +29,7 @@ const DATA = {
   // Education entries
   education: [
     {
-      logo: "/logos/ucla.png", // put logo image in public/logos
+      logo: asset("/logos/ucla.png"), // put logo image in public/logos
       school: "University of California, Los Angeles",
       degree: "B.S. Statistics & Data Science (Minors: Data Science Engineering, Bioinformatics)",
       time: "2024 – 2028 ",
@@ -35,49 +39,49 @@ const DATA = {
   // Experience entries
   experiences: [
     {
-      logo: "/logos/greenopia.png",
+      logo: asset("/logos/greenopia.png"),
       title: "Data Engineer and Software Engineer",
       org: "Greenopia",
       time: "June 2025 – Present",
       details: "Led data engineering effots, building web scraper to enrich 110k+ business's data for outreach sourcing. Designed, developed, and troubleshooted font-end for web app.",
     },
     {
-      logo: "/logos/bhc.png",
+      logo: asset("/logos/bhc.png"),
       title: "Technical Consultant",
       org: "Bruin Health Consulting",
       time: "June 2025 – Present",
       details: "Customer sourcing, CRM filters, data enrichment, web development",
     },
     {
-      logo: "/logos/dsu-logo.png",
+      logo: asset("/logos/dsu-logo.png"),
       title: "Data Analyst",
       org: "Data Science Union",
       time: "Mar 2025 – Present",
       details: "Completed curriculum for Python and ML concepts. Currently working on my capstone project, Daylist+!",
     },
     {
-      logo: "/logos/VEST-Logo.PNG",
+      logo: asset("/logos/VEST-Logo.PNG"),
       title: "Head of Marketing and Membership // Software Engineer",
       org: "VEST @ UCLA",
       time: "Jan 2025 – Present",
       details: "Lead social media strategy, recruitment campaigns each quarter, work with design team, plan internal events. As a software engineer, I help develop web apps for my startup GoWeave. I also do a little marketing for GoWeave as well.",
     },
     {
-      logo: "/logos/bsa-logo.png",
+      logo: asset("/logos/bsa-logo.png"),
       title: "Machine Learning Researcher // Data Journalist",
       org: "Bruin Sports Analytics",
       time: "Oct 2024 – Jun 2025",
       details: "Developed XGBoost models on shot prediction using on court factors, published article analyzing F1 pit stop times, worked on NFL draft Prediction model.",
     },
     {
-      logo: "/logos/uci_logo.png",
+      logo: asset("/logos/uci_logo.png"),
       title: "Student Researcher",
       org: "COSMOS @ UCI",
       time: "July 2023",
       details: "Alzheimer’s research applying computational methods to test if low-cost methods are effective at determining brain degeneration in patients.",
     },
     {
-      logo: "/logos/stanford logo.png",
+      logo: asset("/logos/stanford logo.png"),
       title: "AI Institute Student",
       org: "Stanford Pre-Collegiate AI Insitute",
       time: "July 2022",
@@ -92,7 +96,7 @@ const DATA = {
         "Reorganized entire database of 300k+ businesses, led data engineering effors, building web scraping pipelines to enrich 30k+ business's data, built frontend pages of web app, collaborated on data strategy with executive leadership.",
       tech: ["Firebase", "Sheets", "Pandas", "React"],
       links: { live: "", repo: "" },
-      logo: "/logos/greenopia.png", // small assoc logo bottom-right (optional)
+      logo: asset("/logos/greenopia.png"), // small assoc logo bottom-right (optional)
     },
     {
       title: "Daylist+ Recommender",
@@ -100,7 +104,7 @@ const DATA = {
         "Coming Nov 2025! Playlist recommender that mixes user tastes with weather/context signals and embeddings.",
       tech: ["Python", "XGBoost", "Spotify API", "Redis"],
       links: { live: "", repo: "https://github.com/kierro1209/weather_daylist" },
-      logo: "/logos/dsu-logo.png",
+      logo: asset("/logos/dsu-logo.png"),
     },
     {
       title: "BR.AI.N Segmentation UI",
@@ -116,20 +120,20 @@ const DATA = {
         "Create short-form videos using keywords and reactions. I designed the stitching feature.",
       tech: ["RunwayML", "MoviePy", "FastAPI"],
       links: { live: "", repo: "" },
-      logo: "/logos/VEST-Logo.PNG",
+      logo: asset("/logos/VEST-Logo.PNG"),
     }
 
   ],
   // Articles / Publications entries
   articles: [
     {
-      logo: "/logos/bsa-logo.png",
+      logo: asset("/logos/bsa-logo.png"),
       title: "Is it Already Over? Examining F1 Pit Stop Times and their Effect on Winning",
       blurb: "Exploratory + predictive analysis of race strategy and driver performance; published piece with visuals.",
       link: "https://www.bruinsportsanalytics.com/post/f1-pitstops-time",
     },
     {
-      logo: "/logos/uci_logo.png",
+      logo: asset("/logos/uci_logo.png"),
       title: "Alzheimer's Research — COSMOS @ UCI",
       blurb: "Applied ML and exploratory analysis to determine if cognitive pre-screen tests can effectively predict a patient's progression.",
       link: "https://drive.google.com/file/d/1uX8vIZFOtNuzLQLcfNfYrmrbNGHqJpdN/view?usp=sharing",
@@ -178,7 +182,7 @@ export default function Portfolio() {
       <style>{`
         @font-face {
           font-family: 'OffBit';
-          src: url('/fonts/OffBit-Bold.ttf') format('truetype');
+          src: url('${BASE}/fonts/OffBit-Bold.ttf') format('truetype');
           font-weight: 100 900;
           font-style: normal;
           font-display: swap;
@@ -267,7 +271,7 @@ export default function Portfolio() {
     <div className="relative md:justify-self-end w-full max-w-[360px]">
       <div className="aspect-[4/5] overflow-hidden rounded-3xl shadow-lg ring-1 ring-slate-700/50">
         <img
-          src="/IMG_0249.jpg" // replace with your actual file
+          src= {asset("/IMG_0249.jpg")} // replace with your actual file
           alt="Kiersten Roth"
           className="h-full w-full object-cover"
         />
