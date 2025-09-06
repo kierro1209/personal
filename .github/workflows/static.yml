@@ -24,8 +24,7 @@ jobs:
       - run: npm install              # <-- use install (not ci) if no lockfile
       - run: npm run build            # must exist in package.json ("build": "vite build")
       - uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist                  # Vite output
+        with: { path: my-portfolio/dist }                
   deploy:
     needs: build
     runs-on: ubuntu-latest
