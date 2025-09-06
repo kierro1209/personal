@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { Github, Linkedin, Mail, Globe, ExternalLink, Moon, Sun, MapPin, FileText } from "lucide-react";
+import { useEffect, useMemo, useState } from "react";
+import { Github, Linkedin, Mail, ExternalLink, Moon, Sun, MapPin, FileText } from "lucide-react";
 import { motion } from "framer-motion";
 
 // ✅ Single-file, drop-in React portfolio component
