@@ -14,7 +14,7 @@ const asset = (p?: string) =>
 const DATA = {
   name: "Kiersten Roth",
   headline: "Hi, I'm Kiersten",
-  title: "Portfolio",
+  title: "Data | Engineering | Student | Leader",
   location: "Los Angeles, CA",
   bio: `I'm a UCLA student studying Data Science with concentrations in CS and bioinformatics. I have experience in startup consulting, computational biology research, org leadership, and social media management. My love for photography and digital media has led me to pursue some marketing roles recreationally in my schools organizations. I love tech, healthcare, and the start up space. I'm looking to be a Data Engineer or Data Scientist when I graduate. Nice to meet you!`,
   aboutParagraph:
