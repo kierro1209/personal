@@ -16,9 +16,9 @@ const DATA = {
   headline: "Hi, I'm Kiersten",
   title: "Data | Engineering | Student | Leader",
   location: "Los Angeles, CA",
-  bio: `I'm a UCLA student studying Data Science with concentrations in CS and bioinformatics. I have experience in startup consulting, computational biology research, org leadership, and social media management. My love for photography and digital media has led me to pursue some marketing roles recreationally in my schools organizations. I love tech, healthcare, and the start up space. I'm looking to be a Data Engineer or Data Scientist when I graduate. Nice to meet you!`,
+  bio: `I'm a Software and Data Engineering Intern at Greenopia and I'm studying Data Science with concentrations in CS and Bioinformatics at UCLA! I'm currently exploring the healthtech startup space and would love to discover more about the analytical marketing industry. I'm an aspiring Data Engineer and love meeting new people. Nice to meet you!`,
   aboutParagraph:
-    `Outside of academics and work, I enjoy photography, journalling, working out, and discovering new coffee spots. Currently, I'm exploring film photography and my favorite cofee spots are Stagger, Five07, and Tadaima!`,
+    `Outside of academics and work, I enjoy photography, journalling, and discovering new coffee spots. Currently, I'm exploring film photography and my favorite cofee spots is Stagger!`,
   resumeUrl: "https://drive.google.com/file/d/10Z0h1gGIpBGuHCw0XNdRyRusIijsstrB/view?usp=sharing", // replace with your resume link
   email: "kierroth12@g.ucla.edu",
   socials: {
@@ -40,14 +40,14 @@ const DATA = {
   experiences: [
     {
       logo: asset("/logos/greenopia.png"),
-      title: "Data Engineer and Software Engineer",
+      title: "Data and Software Engineering Intern",
       org: "Greenopia",
       time: "June 2025 – Present",
-      details: "Led data engineering effots, building web scraper to enrich 110k+ business's data for outreach sourcing. Designed, developed, and troubleshooted font-end for web app.",
+      details: "Led data engineering effots, building web scraper to enrich 30k+ business's data for outreach sourcing. Designed, developed, and troubleshooted font-end for web app.",
     },
     {
       logo: asset("/logos/bhc.png"),
-      title: "Technical Consultant",
+      title: "Project Manager",
       org: "Bruin Health Consulting",
       time: "June 2025 – Present",
       details: "Customer sourcing, CRM filters, data enrichment, web development",
@@ -93,7 +93,7 @@ const DATA = {
     {
       title: "Greenopia Data Redesign & App",
       blurb:
-        "Reorganized entire database of 300k+ businesses, led data engineering effors, building web scraping pipelines to enrich 30k+ business's data, built frontend pages of web app, collaborated on data strategy with executive leadership.",
+        "Reorganized entire database of 300k+ businesses, led data engineering efforts, building web scraping pipelines to enrich 30k+ business's data, built frontend pages of web app, collaborated on data strategy with executive leadership.",
       tech: ["Firebase", "Sheets", "Pandas", "React"],
       links: { live: "", repo: "" },
       logo: asset("/logos/greenopia.png"), // small assoc logo bottom-right (optional)
