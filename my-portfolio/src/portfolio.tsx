@@ -16,9 +16,9 @@ const DATA = {
   headline: "Hi, I'm Kiersten",
   title: "Data | Engineering | Student | Leader",
   location: "Los Angeles, CA",
-  bio: `I'm a Software and Data Engineering Intern at Greenopia and I'm studying Data Science with concentrations in CS and Bioinformatics at UCLA! I'm currently exploring the healthtech startup space and would love to discover more about the analytical marketing industry. I'm an aspiring Data Engineer and love meeting new people. Nice to meet you!`,
+  bio: `I'm a Software and Data Engineering Intern at Greenopia and I'm studying Data Science with concentrations in CS and Bioinformatics at UCLA! I have experience in startup consulting, computational biology research, data engineering, and full-stack development. I'm currently exploring the healthtech startup space and would love to discover more about the analytical marketing industry. I'm an aspiring Data Engineer and love meeting new people. Nice to meet you!`,
   aboutParagraph:
-    `Outside of academics and work, I enjoy photography, journalling, and discovering new coffee spots. Currently, I'm exploring film photography and my favorite cofee spots is Stagger!`,
+    `Outside of academics and work, I enjoy photography, journalling, and discovering new coffee spots. Currently, I'm exploring film photography and my favorite coffee spots is Stagger!`,
   resumeUrl: "https://drive.google.com/file/d/10Z0h1gGIpBGuHCw0XNdRyRusIijsstrB/view?usp=sharing", // replace with your resume link
   email: "kierroth12@g.ucla.edu",
   socials: {
@@ -43,7 +43,7 @@ const DATA = {
       title: "Data and Software Engineering Intern",
       org: "Greenopia",
       time: "June 2025 – Present",
-      details: "Led data engineering effots, building web scraper to enrich 30k+ business's data for outreach sourcing. Designed, developed, and troubleshooted font-end for web app.",
+      details: "Led data engineering efforts, building web scraper to enrich 30k+ business's data for outreach sourcing. Designed, developed, and troubleshooted front-end for web app.",
     },
     {
       logo: asset("/logos/bhc.png"),
@@ -170,13 +170,15 @@ const DATA = {
 export default function Portfolio() {
   const [dark, setDark] = useState(false);
   useEffect(() => {
-    if (dark) document.documentElement.classList.add("dark");
-    else document.documentElement.classList.remove("dark");
-  }, [dark]);
+  document.documentElement.classList.toggle('dark', dark);
+  localStorage.setItem('theme', dark ? 'dark' : 'light');
+}, [dark]);
+
 
   const year = useMemo(() => new Date().getFullYear(), []);
 
   return (
+
     <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
       {/* Custom font face: put your .ttf or .woff2 in /public/fonts and update path/name */}
       <style>{`
@@ -213,72 +215,72 @@ export default function Portfolio() {
       </header>
 
       <main className="mx-auto max-w-6xl px-4">
-  {/* Hero */}
-  <section className="py-14 md:py-20">
-  <div className="grid gap-10 md:grid-cols-[1.4fr_1fr] items-center">
-    {/* LEFT: text + bio + links */}
-    <div>
-      <h1 className="font-display text-5xl md:text-6xl font-bold">
-        {DATA.headline}
-      </h1>
-      <h2 className="mt-2 font-display text-xl text-slate-400">
-        {DATA.title}
-      </h2>
-      <p className="mt-4 max-w-2xl text-slate-300">
-        {DATA.bio}
-      </p>
+        {/* Hero */}
+        <section className="py-14 md:py-20">
+          <div className="grid gap-10 md:grid-cols-[1.4fr_1fr] items-center">
+            {/* LEFT: text + bio + links */}
+            <div>
+              <h1 className="font-display text-5xl md:text-6xl font-bold">
+                {DATA.headline}
+              </h1>
+              <h2 className="mt-2 font-display text-xl text-slate-600 dark:text-slate-400">
+                {DATA.title}
+              </h2>
+              <p className="mt-4 max-w-2xl text-slate-700 dark:text-slate-300">
+                {DATA.bio}
+              </p>
 
-      {/* link row */}
-      <div className="mt-6 flex items-center gap-3 flex-wrap">
-        <a
-          href={DATA.resumeUrl}
-          className="inline-flex items-center gap-2 rounded-xl bg-red-700 px-4 py-2 text-white text-sm font-medium shadow-sm hover:bg-red-600"
-        >
-          <FileText className="size-4" /> Resume
-        </a>
-        <a
-          href={`mailto:${DATA.email}`}
-          className="inline-flex items-center gap-2 rounded-xl border border-slate-600 px-4 py-2 text-sm font-medium hover:bg-slate-800"
-        >
-          <Mail className="size-4" /> Email
-        </a>
-        <a
-          href={DATA.socials.github}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-2 text-sm"
-        >
-          <Github className="size-4" /> GitHub
-        </a>
-        <a
-          href={DATA.socials.linkedin}
-          target="_blank"
-          rel="noreferrer"
-          className="inline-flex items-center gap-2 text-sm"
-        >
-          <Linkedin className="size-4" /> LinkedIn
-        </a>
-      </div>
+              {/* link row */}
+              <div className="mt-6 flex items-center gap-3 flex-wrap">
+                <a
+                  href={DATA.resumeUrl}
+                  className="inline-flex items-center gap-2 rounded-xl bg-red-700 px-4 py-2 text-white text-sm font-medium shadow-sm hover:bg-red-600"
+                >
+                  <FileText className="size-4" /> Resume
+                </a>
+                <a
+                  href={`mailto:${DATA.email}`}
+                  className="inline-flex items-center gap-2 rounded-xl border border-slate-600 px-4 py-2 text-sm font-medium hover:bg-slate-800"
+                >
+                  <Mail className="size-4" /> Email
+                </a>
+                <a
+                  href={DATA.socials.github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-sm"
+                >
+                  <Github className="size-4" /> GitHub
+                </a>
+                <a
+                  href={DATA.socials.linkedin}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-sm"
+                >
+                  <Linkedin className="size-4" /> LinkedIn
+                </a>
+              </div>
 
-      {/* location BELOW the links */}
-      <div className="mt-3 flex items-center gap-2 text-sm text-slate-400">
-        <MapPin className="size-4" />
-        {DATA.location}
-      </div>
-    </div>
+              {/* location BELOW the links */}
+              <div className="mt-3 flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+                <MapPin className="size-4" />
+                {DATA.location}
+              </div>
+            </div>
 
-    {/* RIGHT: photo */}
-    <div className="relative md:justify-self-end w-full max-w-[360px]">
-      <div className="aspect-[4/5] overflow-hidden rounded-3xl shadow-lg ring-1 ring-slate-700/50">
-        <img
-          src= {asset("/IMG_0249.jpg")} // replace with your actual file
-          alt="Kiersten Roth"
-          className="h-full w-full object-cover"
-        />
-      </div>
-    </div>
-  </div>
-</section>
+            {/* RIGHT: photo */}
+            <div className="relative md:justify-self-end w-full max-w-[360px]">
+              <div className="aspect-[4/5] overflow-hidden rounded-3xl shadow-lg ring-1 ring-slate-700/50">
+                <img
+                  src={asset("/IMG_0249.jpg")}
+                  alt="Kiersten Roth"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* About (paragraph + long cards for education & experience) */}
         <section id="about" className="py-10 md:py-14">
@@ -317,7 +319,7 @@ export default function Portfolio() {
           <SectionHeader title="Articles & Publications" />
           <div className="mt-6 flex flex-col gap-4">
             {DATA.articles.map((a) => (
-              <LongCard key={a.title} logo={a.logo} title={a.title} body={a.blurb} link = {a.link} rightTag="Publication" />
+              <LongCard key={a.title} logo={a.logo} title={a.title} body={a.blurb} link={a.link} rightTag="Publication" />
             ))}
           </div>
         </section>
