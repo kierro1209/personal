@@ -14,7 +14,7 @@ const asset = (p?: string) =>
 const DATA = {
   name: "Kiersten Roth",
   headline: "Hi, I'm Kiersten",
-  title: "Data | Engineering | Student | Leader",
+  title: "Student | Engineer",
   location: "Los Angeles, CA",
   bio: `I'm a Software and Data Engineering Intern at Greenopia and I'm studying Data Science with concentrations in CS and Bioinformatics at UCLA! I have experience in startup consulting, computational biology research, data engineering, and full-stack development. I'm currently exploring the healthtech startup space and would love to discover more about the analytical marketing industry. I'm an aspiring Data Engineer and love meeting new people. Nice to meet you!`,
   aboutParagraph:
@@ -33,7 +33,7 @@ const DATA = {
       school: "University of California, Los Angeles",
       degree: "B.S. Statistics & Data Science (Minors: Data Science Engineering, Bioinformatics)",
       time: "2024 – 2028 ",
-      details: "GPA 3.84. Coursework: Linear ALgebra, SQL, Data Structures and Algorithms, OOP (Java/C++/Python), R programming, Regression and Modelling Techniques",
+      details: "GPA 3.84. Coursework: Linear Algebra, SQL, Data Structures and Algorithms, OOP (Java/C++/Python), R programming, Regression and Modelling Techniques",
     },
   ],
   // Experience entries
@@ -47,17 +47,17 @@ const DATA = {
     },
     {
       logo: asset("/logos/bhc.png"),
-      title: "Project Manager",
+      title: "Director of Technology // Project Manager",
       org: "Bruin Health Consulting",
       time: "June 2025 – Present",
-      details: "Customer sourcing, CRM filters, data enrichment, web development",
+      details: "Customer sourcing, CRM filters, data enrichment, full stack web development",
     },
     {
       logo: asset("/logos/dsu-logo.png"),
       title: "Data Analyst",
       org: "Data Science Union",
       time: "Mar 2025 – Present",
-      details: "Completed curriculum for Python and ML concepts. Currently working on my capstone project, Daylist+!",
+      details: "Completed curriculum for Python and ML concepts. Currently working on my capstone project, a genetic pathogencity classifier!",
     },
     {
       logo: asset("/logos/VEST-Logo.PNG"),
@@ -99,10 +99,10 @@ const DATA = {
       logo: asset("/logos/greenopia.png"), // small assoc logo bottom-right (optional)
     },
     {
-      title: "Daylist+ Recommender",
+      title: "Genetic Pathogencity Classifier",
       blurb:
-        "Coming Nov 2025! Playlist recommender that mixes user tastes with weather/context signals and embeddings.",
-      tech: ["Python", "XGBoost", "Spotify API", "Redis"],
+        "Coming Nov 2025! Using open source genetic data to classify possible expression levels.",
+      tech: ["Python", "RandomForest", "ClinVar", "React"],
       links: { live: "", repo: "https://github.com/kierro1209/weather_daylist" },
       logo: asset("/logos/dsu-logo.png"),
     },
