@@ -18,7 +18,7 @@ const DATA = {
   location: "Los Angeles, CA",
   bio: `I'm a Software and Data Engineering Intern at Greenopia and I'm studying Data Science with concentrations in CS and Bioinformatics at UCLA! I have experience in startup consulting, computational biology research, data engineering, and full-stack development. I'm currently exploring the healthtech startup space and would love to discover more about the analytical marketing industry. I'm an aspiring Data Engineer and love meeting new people. Nice to meet you!`,
   aboutParagraph:
-    `Outside of academics and work, I enjoy photography, journalling, and discovering new coffee spots. Currently, I'm exploring film photography and my favorite coffee spots is Stagger!`,
+    `Outside of academics and work, I enjoy photography, journalling, marketing/creative directing and discovering new coffee spots. Currently, I'm exploring film photography and my favorite coffee spot is Stagger!`,
   resumeUrl: "https://drive.google.com/file/d/10Z0h1gGIpBGuHCw0XNdRyRusIijsstrB/view?usp=sharing", // replace with your resume link
   email: "kierroth12@g.ucla.edu",
   socials: {
@@ -33,7 +33,7 @@ const DATA = {
       school: "University of California, Los Angeles",
       degree: "B.S. Statistics & Data Science (Minors: Data Science Engineering, Bioinformatics)",
       time: "2024 – 2028 ",
-      details: "GPA 3.84. Coursework: Linear Algebra, SQL, Data Structures and Algorithms, OOP (Java/C++/Python), R programming, Regression and Modelling Techniques",
+      details: "GPA 3.85. Coursework: Linear Algebra, SQL, Data Structures and Algorithms, OOP (Java/C++/Python), R programming, Regression and Modelling Techniques",
     },
   ],
   // Experience entries
@@ -57,14 +57,14 @@ const DATA = {
       title: "Data Analyst",
       org: "Data Science Union",
       time: "Mar 2025 – Present",
-      details: "Completed curriculum for Python and ML concepts. Currently working on my capstone project, a genetic pathogencity classifier!",
+      details: "Consult for Fortune 500 clients and built Genetic Pathogencity Classifier",
     },
     {
       logo: asset("/logos/VEST-Logo.PNG"),
-      title: "Head of Marketing and Membership // Software Engineer",
+      title: "Incoming President of VEST // Marketing Director",
       org: "VEST @ UCLA",
       time: "Jan 2025 – Present",
-      details: "Lead social media strategy, recruitment campaigns each quarter, work with design team, plan internal events. As a software engineer, I help develop web apps for my startup GoWeave. I also do a little marketing for GoWeave as well.",
+      details: "Lead social media strategy, recruitment campaigns each quarter, work with design team, plan internal events. As incoming president, I'm always looking for ways to improve VEST and bring together UCLA's best and brightest.",
     },
     {
       logo: asset("/logos/bsa-logo.png"),
@@ -101,9 +101,10 @@ const DATA = {
     {
       title: "Genetic Pathogencity Classifier",
       blurb:
-        "Coming Nov 2025! Using open source genetic data to classify possible expression levels.",
+        "Work in Progress Using open source genetic data to classify possible expression levels.",
       tech: ["Python", "RandomForest", "ClinVar", "React"],
-      links: { live: "", repo: "https://github.com/kierro1209/weather_daylist" },
+      
+      links: { live: "", repo: "https://github.com/kierro1209/genetic_variant_classifier" },
       logo: asset("/logos/dsu-logo.png"),
     },
     {
