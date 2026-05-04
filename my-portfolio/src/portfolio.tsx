@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Github, Linkedin, Mail, ExternalLink, Moon, Sun, MapPin, FileText } from "lucide-react";
+import { Github, Linkedin, ExternalLink, Moon, Sun, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 
 // ✅ Single-file, drop-in React portfolio component
@@ -19,7 +19,6 @@ const DATA = {
   bio: `I'm a Software and Data Engineering Intern at Greenopia and I'm studying Data Science with concentrations in CS and Bioinformatics at UCLA! I have experience in startup consulting, computational biology research, data engineering, and full-stack development. I'm currently exploring the healthtech startup space and would love to discover more about the analytical marketing industry. I'm an aspiring Data Engineer and love meeting new people. Nice to meet you!`,
   aboutParagraph:
     `Outside of academics and work, I enjoy photography, journalling, marketing/creative directing and discovering new coffee spots. Currently, I'm exploring film photography and my favorite coffee spot is Stagger!`,
-  resumeUrl: "https://drive.google.com/file/d/10Z0h1gGIpBGuHCw0XNdRyRusIijsstrB/view?usp=sharing", // replace with your resume link
   email: "kierroth12@g.ucla.edu",
   socials: {
     github: "https://github.com/kierro1209",
@@ -39,32 +38,38 @@ const DATA = {
   // Experience entries
   experiences: [
     {
+      logo: asset("/logos/AZ-logo.png"),
+      title: "Incoming Data Engineering Intern",
+      org: "AstraZeneca",
+      time: "June 2026 – Present",
+      details: "Working under the Manufacturing & IT teams.",
+    },
+    {
       logo: asset("/logos/greenopia.png"),
       title: "Data and Software Engineering Intern",
       org: "Greenopia",
       time: "June 2025 – Present",
-      details: "Led data engineering efforts, building web scraper to enrich 30k+ business's data for outreach sourcing. Designed, developed, and troubleshooted front-end for web app.",
-    },
+      details: "Engineered internal customer management tools, enriched over 30k business's data for production, built backend architecture to automate data transfer for over 400 businesses into mobile app."},
     {
       logo: asset("/logos/bhc.png"),
       title: "Director of Technology // Project Manager",
       org: "Bruin Health Consulting",
       time: "June 2025 – Present",
-      details: "Customer sourcing, CRM filters, data enrichment, full stack web development",
+      details: "Built MVP for consumer facing platform for Greenopia, built app for startup accelerator that was integrated into their current app suite, and building backend architecture solutions for Fortune 500 Pharmaceutical Companies.",
     },
     {
       logo: asset("/logos/dsu-logo.png"),
       title: "Data Analyst",
       org: "Data Science Union",
       time: "Mar 2025 – Present",
-      details: "Consult for Fortune 500 clients and built Genetic Pathogencity Classifier",
+      details: "Built part of production pipeline for Michelin Connected Fleet's braking intelligence system, reducing individual reporting times by 20%.",
     },
     {
       logo: asset("/logos/VEST-Logo.PNG"),
-      title: "Incoming President of VEST // Marketing Director",
+      title: "President of VEST // Marketing Director",
       org: "VEST @ UCLA",
       time: "Jan 2025 – Present",
-      details: "Lead social media strategy, recruitment campaigns each quarter, work with design team, plan internal events. As incoming president, I'm always looking for ways to improve VEST and bring together UCLA's best and brightest.",
+      details: "Lead UCLA's premier tech-focused entreprenuership club, securing sponsorships with YC-backed companies and maintaining VC relationships with major firms to help fund UCLA student founders.",
     },
     {
       logo: asset("/logos/bsa-logo.png"),
@@ -95,7 +100,7 @@ const DATA = {
       blurb:
         "Reorganized entire database of 300k+ businesses, led data engineering efforts, building web scraping pipelines to enrich 30k+ business's data, built frontend pages of web app, collaborated on data strategy with executive leadership.",
       tech: ["Firebase", "Sheets", "Pandas", "React"],
-      links: { live: "", repo: "" },
+      links: { live: "https://app.greenopia.com/discover/", repo: "" },
       logo: asset("/logos/greenopia.png"), // small assoc logo bottom-right (optional)
     },
     {
@@ -122,6 +127,38 @@ const DATA = {
       tech: ["RunwayML", "MoviePy", "FastAPI"],
       links: { live: "", repo: "" },
       logo: asset("/logos/VEST-Logo.PNG"),
+    },
+    {
+      title: "Michelin Connected Fleet Braking Intelligence System",
+      blurb:
+        "I built a portion of the pipeline responsible for dynamically calculating possible reductions in braking score thresholds before scores may be reported and used by drivers, fleet manageers, and maintenance crews.",
+      tech: ["Python", "Pandas"],
+      links: { live: "", repo: "" },
+      logo: asset("/logos/MCF-logo.png"),
+    },
+    {
+      title: "Polaris",
+      blurb:
+        "🏆 Winner of Best Social Impact Award. For LA Hacks 2026, my team and I built an agentic hospital paging system, integrating options for EHR & voice-dictated descriptions to be used as context for paging as well as a visual communication interface for hospital operators to view clinician locations within medical buildings.",
+      tech: ["Fetch AI", "Python", "FastAPI", "Framer"],
+      links: { live: "https://devpost.com/software/polaris-mh7rd8?_gl=1*1pbtemz*_gcl_au*MTUwMjc4NzMxMC4xNzc3MTkwNjMx*_ga*MTM0OTExNzU4OS4xNzc3MTkwNjMy*_ga_0YHJK3Y10M*czE3NzcyMzYyOTEkbzIkZzEkdDE3NzcyMzc3MTQkajQ3JGwwJGgw", repo: "" },
+      logo: asset("/logos/lahacks-logo.png"),
+    },
+    {
+      title: "Sex-Stratified Statin Toxicity Prediction: A Multi-Modal ML Approach to Incorporating Hormonal Covariates",
+      blurb:
+        "🏆 Winner of Best Software/Algorithm Award. For InTranscription's Biohackathon 2026, we built an ML architecture that quantifies risk for female patients who may require statin medication.",
+      tech: ["SciKitLearn", "PharmGKB", "NHANES", "FAERS"],
+      links: { live: "", repo: "https://github.com/kierro1209/statin_predictor" },
+      logo: asset("/logos/inT-logo.png"),
+    },
+    {
+      title: "Tokenizing Patient Medical History for Resource Allocation Optimization",
+      blurb:
+        "My team and I designed a token structure to capture patient medical history as a sequence, applying next-token generation and reinforcement learning to predict when, where, and what they'll need to optimize resource allocation at scale to help improve care for millions.",
+      tech: ["Python", "PyTorch", "SB3"],
+      links: { live: "", repo: "" },
+      logo: asset("/logos/datafest-logo.png"),
     }
 
   ],
@@ -234,18 +271,6 @@ export default function Portfolio() {
               {/* link row */}
               <div className="mt-6 flex items-center gap-3 flex-wrap">
                 <a
-                  href={DATA.resumeUrl}
-                  className="inline-flex items-center gap-2 rounded-xl bg-red-700 px-4 py-2 text-white text-sm font-medium shadow-sm hover:bg-red-600"
-                >
-                  <FileText className="size-4" /> Resume
-                </a>
-                <a
-                  href={`mailto:${DATA.email}`}
-                  className="inline-flex items-center gap-2 rounded-xl border border-slate-600 px-4 py-2 text-sm font-medium hover:bg-slate-800"
-                >
-                  <Mail className="size-4" /> Email
-                </a>
-                <a
                   href={DATA.socials.github}
                   target="_blank"
                   rel="noreferrer"
@@ -339,7 +364,6 @@ export default function Portfolio() {
         <section id="contact" className="py-10 md:py-16">
           <SectionHeader title="Get in touch" />
           <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-            <a href={`mailto:${DATA.email}`} className="inline-flex items-center gap-2 rounded-xl bg-red-800 px-4 py-2 text-white shadow-sm hover:opacity-90"><Mail className="size-4" /> Email me</a>
             <a href={DATA.socials.linkedin} className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 text-sm hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900"><Linkedin className="size-4" /> Connect on LinkedIn</a>
           </div>
         </section>
