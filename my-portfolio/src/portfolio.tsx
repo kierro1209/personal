@@ -14,16 +14,17 @@ const asset = (p?: string) =>
 const DATA = {
   name: "Kiersten Roth",
   headline: "Hi, I'm Kiersten",
-  title: "Student | Engineer",
+  title: "Student | Engineer | Community Leader",
   location: "Los Angeles, CA",
-  bio: `I'm a Software and Data Engineering Intern at Greenopia and I'm studying Data Science with concentrations in CS and Bioinformatics at UCLA! I have experience in startup consulting, computational biology research, data engineering, and full-stack development. I'm currently exploring the healthtech startup space and would love to discover more about the analytical marketing industry. I'm an aspiring Data Engineer and love meeting new people. Nice to meet you!`,
+  bio: `I'm currently a Data Science Intern at AstraZeneca supporting the Supply Chain teams in optimizing personalized patient care for diseases like Multiple Myeloma and Multiple Sclerosis. I also run VEST, a tech entrepreneurship/founder community at UCLA where I organize large scale events for the socal founder community and partner with VCs and startups to meet our exceptional talent. Great to meet you!`,
   aboutParagraph:
-    `Outside of academics and work, I enjoy photography, journalling, marketing/creative directing and discovering new coffee spots. Currently, I'm exploring film photography and my favorite coffee spot is Stagger!`,
+    `Outside of academics and work, I enjoy photography, journaling, marketing/creative directing and discovering new coffee spots. Currently, I'm exploring film photography and my favorite coffee spot is Re:Coffee!`,
   email: "kierroth12@g.ucla.edu",
   socials: {
     github: "https://github.com/kierro1209",
     linkedin: "https://www.linkedin.com/in/kiersten-roth/",
     website: "https://github.com/kierro1209/personal",
+    X: "https://x.com/kierrroth"
   },
   // Education entries
   education: [
@@ -32,30 +33,30 @@ const DATA = {
       school: "University of California, Los Angeles",
       degree: "B.S. Statistics & Data Science (Minors: Data Science Engineering, Bioinformatics)",
       time: "2024 – 2028 ",
-      details: "GPA 3.85. Coursework: Linear Algebra, SQL, Data Structures and Algorithms, OOP (Java/C++/Python), R programming, Regression and Modelling Techniques",
+      details: "GPA 3.85. Coursework: Linear Algebra, SQL, Data Structures and Algorithms, OOP (Java/C++/Python), R programming, Regression and Modelling Techniques, ML Methods, Computational Genomics, Theoretical Statistics, Experimental Design",
     },
   ],
   // Experience entries
   experiences: [
     {
       logo: asset("/logos/AZ-logo.png"),
-      title: "Incoming Data Engineering Intern",
+      title: "Data Science Intern",
       org: "AstraZeneca",
       time: "June 2026 – Present",
-      details: "Working under the Manufacturing & IT teams.",
+      details: "Working under the Cell Thereapy Technical Operations division to analyze supply chain routing, performance, distribution, and network data to support efficient and effective patient care.",
     },
     {
       logo: asset("/logos/greenopia.png"),
-      title: "Data and Software Engineering Intern",
+      title: "Founding Data and Software Engineering Intern",
       org: "Greenopia",
       time: "June 2025 – Present",
-      details: "Engineered internal customer management tools, enriched over 30k business's data for production, built backend architecture to automate data transfer for over 400 businesses into mobile app."},
+      details: "Engineered internal customer management tools, enriched over 50k business's data for production, built backend architecture to automate data transfer for over 400 businesses into mobile app. I also built out an API layer to unify our data ingestion pipeline from business onboarding to production view in our mobile app."},
     {
-      logo: asset("/logos/bhc.png"),
-      title: "Director of Technology // Project Manager",
-      org: "Bruin Health Consulting",
-      time: "June 2025 – Present",
-      details: "Built MVP for consumer facing platform for Greenopia, built app for startup accelerator that was integrated into their current app suite, and building backend architecture solutions for Fortune 500 Pharmaceutical Companies.",
+      logo: asset("/logos/VEST-Logo.PNG"),
+      title: "President of VEST // Marketing Director",
+      org: "VEST @ UCLA",
+      time: "Jan 2025 – Present",
+      details: "Lead UCLA's premier tech-focused entreprenuership club, securing sponsorships with YC-backed companies and maintaining VC relationships with major firms to help fund UCLA student founders. I plan events in partnership with other companies, VCs, and entrepreneurship orgs as well as direct recruitment, internal programming, and leadership. As marketing director, I grew our views to over 117k+ and collaborated with our design team to create a brand kit. Prev Patnerships: Cognition, Manus (acquired by Meta), Codex, KP Fellows, EF, Upfront, a16z, Notable Captial, ZFellows, Happenstance AI, Julius AI, BCV",
     },
     {
       logo: asset("/logos/dsu-logo.png"),
@@ -65,11 +66,11 @@ const DATA = {
       details: "Built part of production pipeline for Michelin Connected Fleet's braking intelligence system, reducing individual reporting times by 20%.",
     },
     {
-      logo: asset("/logos/VEST-Logo.PNG"),
-      title: "President of VEST // Marketing Director",
-      org: "VEST @ UCLA",
-      time: "Jan 2025 – Present",
-      details: "Lead UCLA's premier tech-focused entreprenuership club, securing sponsorships with YC-backed companies and maintaining VC relationships with major firms to help fund UCLA student founders.",
+      logo: asset("/logos/bhc.png"),
+      title: "Director of Technology // Project Manager",
+      org: "Bruin Health Consulting",
+      time: "June 2025 – Present",
+      details: "Built MVP for consumer facing platform for Greenopia, built app for startup accelerator that was integrated into their current app suite, and building backend architecture solutions for Fortune 500 Pharmaceutical Companies.",
     },
     {
       logo: asset("/logos/bsa-logo.png"),
@@ -159,6 +160,22 @@ const DATA = {
       tech: ["Python", "PyTorch", "SB3"],
       links: { live: "", repo: "" },
       logo: asset("/logos/datafest-logo.png"),
+    },
+    {
+      title: "Daily Newspaper Agent System",
+      blurb:
+        "I read a lot of news, substack articles, and research papers so I made a couple agents and a frontend to collect a daily update on topics I'm interested in!",
+      tech: ["Python", "Github Actions", "Gemini Flash 2.5"],
+      links: { live: "https://x.com/kierrroth/status/2079599506119880718?s=20", repo: "https://github.com/kierro1209/sunday_news" },
+      logo: ''
+    },
+    {
+      title: "LA Transit Monitoring System",
+      blurb:
+        "Currently, trying to learn systems & inference more deeply so I'm creating a better model to predict when my bus comes in the morning for class.",
+      tech: [ "FastAPI", "GTFS"],
+      links: { live: "", repo: "" },
+      logo: ''
     }
 
   ],
@@ -285,6 +302,18 @@ export default function Portfolio() {
                   className="inline-flex items-center gap-2 text-sm"
                 >
                   <Linkedin className="size-4" /> LinkedIn
+                </a>
+                <a
+                  href={DATA.socials.X}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-2 text-sm"
+                >
+                  <img
+                    src= {asset("/logos/x.svg")}
+                    alt=""
+                    className="size-4"
+                  />
                 </a>
               </div>
 
