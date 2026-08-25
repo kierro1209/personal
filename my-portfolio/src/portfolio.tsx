@@ -401,7 +401,7 @@ export default function Portfolio() {
       <footer className="border-t border-slate-200 dark:border-slate-800">
         <div className="mx-auto max-w-6xl px-4 py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm text-slate-500 dark:text-slate-400">
           <span>© {year} {DATA.name}. Built with React & Tailwind.</span>
-          <a href={`${BASE}#/gradient-descent`} className="text-red-700 dark:text-red-400 hover:opacity-80">Explore gradient descent →</a>
+          <a href={`${BASE}gradient-descent.html`} className="text-red-700 dark:text-red-400 hover:opacity-80">Explore gradient descent →</a>
         </div>
       </footer>
     </div>
