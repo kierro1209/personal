@@ -53,10 +53,15 @@ function project(point: Point, z = surface(point)) {
 function mapPoint(clientX: number, clientY: number, rect: DOMRect): Point {
   const screenX = ((clientX - rect.left) / rect.width) * MAP_WIDTH;
   const screenY = ((clientY - rect.top) / rect.height) * MAP_HEIGHT;
-  return {
-    x: Math.max(-3.9, Math.min(3.9, (screenX - MAP_WIDTH / 2) / 70)),
-    y: Math.max(-3.1, Math.min(3.1, (screenY - MAP_HEIGHT / 2) / 20)),
-  };
+  let closest = { point: { x: 0, y: 0 }, distance: Number.POSITIVE_INFINITY };
+  for (let x = -3.9; x <= 3.9; x += 0.15) {
+    for (let y = -3.1; y <= 3.1; y += 0.15) {
+      const projected = project({ x, y });
+      const distance = Math.hypot(projected.x - screenX, projected.y - screenY);
+      if (distance < closest.distance) closest = { point: { x, y }, distance };
+    }
+  }
+  return closest.point;
 }
 
 export default function GradientDescent() {
@@ -120,6 +125,10 @@ export default function GradientDescent() {
     setRunning(true);
   };
 
+  const handleMapPointerMove = (event: React.PointerEvent<SVGSVGElement>) => {
+    if (event.buttons === 1) handleMapPointer(event);
+  };
+
   const surfaceLines = useMemo(() => {
     const lines: Array<{ key: string; points: string }> = [];
     for (let row = -GRID_SIZE / 2; row <= GRID_SIZE / 2; row += 1) {
@@ -138,6 +147,31 @@ export default function GradientDescent() {
     }
     return lines;
   }, []);
+  const surfaceCells = useMemo(() => {
+    const cells: Array<{ key: string; points: string; fill: string }> = [];
+    const colors = dark
+      ? ["#1e293b", "#334155", "#7f1d1d", "#991b1b", "#dc2626"]
+      : ["#e2e8f0", "#cbd5e1", "#fecaca", "#fca5a5", "#b91c1c"];
+    for (let row = 0; row < 12; row += 1) {
+      for (let column = 0; column < 16; column += 1) {
+        const x = -4.4 + column * 0.55;
+        const y = -3.3 + row * 0.55;
+        const corners = [
+          project({ x, y }),
+          project({ x: x + 0.55, y }),
+          project({ x: x + 0.55, y: y + 0.55 }),
+          project({ x, y: y + 0.55 }),
+        ];
+        const normalized = Math.max(0, Math.min(0.999, (surface({ x: x + 0.275, y: y + 0.275 }) + 1) / 5));
+        cells.push({
+          key: `${row}-${column}`,
+          points: corners.map((point) => `${point.x},${point.y}`).join(" "),
+          fill: colors[Math.floor(normalized * colors.length)],
+        });
+      }
+    }
+    return cells;
+  }, [dark]);
 
   const pathPoints = path.map((point) => project(point));
   const pathD = pathPoints.map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`).join(" ");
@@ -179,6 +213,7 @@ export default function GradientDescent() {
               role="img"
               aria-label="Interactive 3D gradient descent surface"
               onPointerDown={handleMapPointer}
+              onPointerMove={handleMapPointerMove}
             >
               <defs>
                 <linearGradient id="surface-gradient" x1="0" y1="0" x2="1" y2="1">
@@ -189,11 +224,9 @@ export default function GradientDescent() {
                 <filter id="surface-shadow"><feGaussianBlur stdDeviation="18" /></filter>
               </defs>
               <ellipse cx="375" cy="380" rx="260" ry="48" fill="#631b42" opacity=".22" filter="url(#surface-shadow)" />
-              <path
-                d="M 96 225 L 646 134 L 685 310 L 139 418 Z"
-                fill="url(#surface-gradient)"
-                opacity=".92"
-              />
+              <g className="surface-cells">
+                {surfaceCells.map((cell) => <polygon key={cell.key} points={cell.points} fill={cell.fill} />)}
+              </g>
               <g className="surface-grid">
                 {surfaceLines.map((line) => <polyline key={line.key} points={line.points} />)}
               </g>
