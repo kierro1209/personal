@@ -230,7 +230,7 @@ export default function GradientDescent() {
         <section className="descent-intro">
           <p className="eyebrow">Interactive experiment</p>
           <h1>Gradient <em>descent</em></h1>
-          <p className="intro-copy">Orbit the 3D landscape, then click to drop a ball. It builds momentum, overshoots the global minimum, and settles.</p>
+          <p className="intro-copy">Orbit the 3D landscape, then click to drop a ball. </p>
         </section>
         <section className="descent-layout">
           <div className="visual-card">
@@ -255,10 +255,9 @@ export default function GradientDescent() {
               <div><span>Ball position</span><strong>({ballPosition.x.toFixed(1)}, {ballPosition.y.toFixed(1)})</strong></div>
               <div><span>Minimum found</span><strong>({destination.x.toFixed(2)}, {destination.y.toFixed(2)})</strong></div>
             </div>
-            <p className="control-note">Real-time WebGL physics: gravity follows the surface normal, inertia carries the ball through the minimum, and friction brings it home.</p>
           </aside>
         </section>
-        <footer className="descent-footer"><span>Built to make optimization feel tangible.</span><span>∇f(x) &nbsp;→&nbsp; x − η∇f(x)</span></footer>
+        <footer><span>∇f(x) &nbsp;→&nbsp; x − η∇f(x)</span></footer>
       </main>
     </div>
   );
