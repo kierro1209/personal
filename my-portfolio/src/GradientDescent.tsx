@@ -1,5 +1,5 @@
-import { useMemo, useState } from "react";
-import { ArrowLeft, Play, RotateCcw, SlidersHorizontal } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { ArrowLeft, Moon, Play, RotateCcw, SlidersHorizontal, Sun } from "lucide-react";
 import "./gradient-descent.css";
 
 type Point = { x: number; y: number };
@@ -60,11 +60,59 @@ function mapPoint(clientX: number, clientY: number, rect: DOMRect): Point {
 }
 
 export default function GradientDescent() {
+  const [dark, setDark] = useState(() => localStorage.getItem("theme") === "dark");
   const [start, setStart] = useState<Point>({ x: 2.8, y: -1.9 });
   const [learningRate, setLearningRate] = useState(0.28);
   const [running, setRunning] = useState(true);
+  const [ballPosition, setBallPosition] = useState<Point>({ x: 2.8, y: -1.9 });
+  const [rotation, setRotation] = useState(0);
+  const physicsRef = useRef({ position: start, velocity: { x: 0, y: 0 }, rotation: 0 });
+  const frameRef = useRef<number | null>(null);
   const path = useMemo(() => descend(start, learningRate), [start, learningRate]);
   const destination = path[path.length - 1];
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", dark);
+    localStorage.setItem("theme", dark ? "dark" : "light");
+  }, [dark]);
+
+  useEffect(() => {
+    physicsRef.current = { position: start, velocity: { x: 0, y: 0 }, rotation: 0 };
+    setBallPosition(start);
+    setRotation(0);
+  }, [start, learningRate]);
+
+  useEffect(() => {
+    if (!running) return;
+    let previousTime = performance.now();
+    const tick = (time: number) => {
+      const elapsed = Math.min((time - previousTime) / 1000, 0.04);
+      previousTime = time;
+      const simulation = physicsRef.current;
+      const slope = gradient(simulation.position);
+      const acceleration = { x: -slope.x * 1.85, y: -slope.y * 1.85 };
+      simulation.velocity.x = (simulation.velocity.x + acceleration.x * elapsed) * Math.pow(0.985, elapsed * 60);
+      simulation.velocity.y = (simulation.velocity.y + acceleration.y * elapsed) * Math.pow(0.985, elapsed * 60);
+      simulation.position = {
+        x: Math.max(-3.9, Math.min(3.9, simulation.position.x + simulation.velocity.x * elapsed)),
+        y: Math.max(-3.1, Math.min(3.1, simulation.position.y + simulation.velocity.y * elapsed)),
+      };
+      if (Math.hypot(...Object.values(simulation.velocity)) > 0.01) {
+        simulation.rotation += Math.hypot(simulation.velocity.x, simulation.velocity.y) * elapsed * 5;
+      }
+      setBallPosition({ ...simulation.position });
+      setRotation(simulation.rotation);
+      if (Math.hypot(slope.x, slope.y) > 0.035 || Math.hypot(...Object.values(simulation.velocity)) > 0.02) {
+        frameRef.current = requestAnimationFrame(tick);
+      } else {
+        setRunning(false);
+      }
+    };
+    frameRef.current = requestAnimationFrame(tick);
+    return () => {
+      if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
+    };
+  }, [running]);
 
   const handleMapPointer = (event: React.PointerEvent<SVGSVGElement>) => {
     const point = mapPoint(event.clientX, event.clientY, event.currentTarget.getBoundingClientRect());
@@ -93,7 +141,7 @@ export default function GradientDescent() {
 
   const pathPoints = path.map((point) => project(point));
   const pathD = pathPoints.map((point, index) => `${index === 0 ? "M" : "L"} ${point.x} ${point.y}`).join(" ");
-  const ball = project(path[running ? 0 : path.length - 1]);
+  const ball = project(ballPosition);
   const finalPoint = project(destination);
 
   return (
@@ -102,7 +150,12 @@ export default function GradientDescent() {
         <a className="back-link" href="./">
           <ArrowLeft size={16} /> Back to portfolio
         </a>
-        <div className="descent-mark">KR / LAB 01</div>
+        <div className="descent-header-actions">
+          <div className="descent-mark">KR / LAB 01</div>
+          <button className="theme-control" aria-label="Toggle dark mode" onClick={() => setDark((value) => !value)}>
+            {dark ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
+        </div>
       </header>
 
       <main className="descent-shell">
@@ -151,8 +204,11 @@ export default function GradientDescent() {
                 ))}
               </g>
               <circle cx={finalPoint.x} cy={finalPoint.y} r="9" className="target-ring" />
-              <circle cx={ball.x} cy={ball.y} r="14" className="descent-ball" />
-              <circle cx={ball.x - 4} cy={ball.y - 5} r="3" className="ball-highlight" />
+              <g transform={`translate(${ball.x} ${ball.y}) rotate(${rotation})`}>
+                <circle r="14" className="descent-ball" />
+                <path d="M -8 0 H 8" className="ball-stripe" />
+                <circle cx="-4" cy="-5" r="3" className="ball-highlight" />
+              </g>
             </svg>
             <div className="map-legend">
               <span><i className="legend-ball" /> Start</span>
