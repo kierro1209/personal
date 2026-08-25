@@ -8,12 +8,13 @@ const MAP_WIDTH = 760;
 const MAP_HEIGHT = 520;
 const GRID_SIZE = 12;
 const SURFACE_SCALE = 70;
+const BASE = import.meta.env.BASE_URL;
 
 function surface({ x, y }: Point) {
   return (
-    0.11 * (x * x + 1.35 * y * y) +
-    0.25 * Math.sin(x * 1.7) * Math.cos(y * 1.3) +
-    0.08 * Math.sin(x * 3.4 + y)
+    0.16 * (x * x + 1.35 * y * y) +
+    0.035 * Math.sin(x * 1.7) * Math.cos(y * 1.3) +
+    0.012 * Math.sin(x * 3.4 + y)
   );
 }
 
@@ -95,9 +96,9 @@ export default function GradientDescent() {
       previousTime = time;
       const simulation = physicsRef.current;
       const slope = gradient(simulation.position);
-      const acceleration = { x: -slope.x * 1.85, y: -slope.y * 1.85 };
-      simulation.velocity.x = (simulation.velocity.x + acceleration.x * elapsed) * Math.pow(0.985, elapsed * 60);
-      simulation.velocity.y = (simulation.velocity.y + acceleration.y * elapsed) * Math.pow(0.985, elapsed * 60);
+      const acceleration = { x: -slope.x * 2.4, y: -slope.y * 2.4 };
+      simulation.velocity.x = (simulation.velocity.x + acceleration.x * elapsed) * Math.pow(0.996, elapsed * 60);
+      simulation.velocity.y = (simulation.velocity.y + acceleration.y * elapsed) * Math.pow(0.996, elapsed * 60);
       simulation.position = {
         x: Math.max(-3.9, Math.min(3.9, simulation.position.x + simulation.velocity.x * elapsed)),
         y: Math.max(-3.1, Math.min(3.1, simulation.position.y + simulation.velocity.y * elapsed)),
@@ -180,6 +181,14 @@ export default function GradientDescent() {
 
   return (
     <div className="descent-page">
+      <style>{`
+        @font-face {
+          font-family: "OffBit";
+          src: url("${BASE}fonts/OffBit-Bold.ttf") format("truetype");
+          font-weight: 700;
+          font-display: swap;
+        }
+      `}</style>
       <header className="descent-header">
         <a className="back-link" href="./">
           <ArrowLeft size={16} /> Back to portfolio
@@ -197,7 +206,7 @@ export default function GradientDescent() {
           <p className="eyebrow">Interactive experiment</p>
           <h1>Gradient <em>descent</em></h1>
           <p className="intro-copy">
-            Drop the ball anywhere on the landscape. Watch it sample the slope and descend toward a local minimum.
+            Drop the ball anywhere on the landscape. Watch it build momentum, overshoot the global minimum, and settle.
           </p>
         </section>
 
@@ -205,7 +214,7 @@ export default function GradientDescent() {
           <div className="visual-card">
             <div className="visual-toolbar">
               <span><span className="live-dot" /> Live surface</span>
-              <span className="toolbar-hint">Click anywhere to drop the ball</span>
+              <span className="toolbar-hint">Click or drag anywhere to drop the ball</span>
             </div>
             <svg
               className="surface-map"
@@ -216,14 +225,14 @@ export default function GradientDescent() {
               onPointerMove={handleMapPointerMove}
             >
               <defs>
-                <linearGradient id="surface-gradient" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stopColor="#fbd1c6" />
-                  <stop offset="48%" stopColor="#eb8f8c" />
-                  <stop offset="100%" stopColor="#b65d71" />
-                </linearGradient>
+                <radialGradient id="ball-gradient" cx="30%" cy="25%" r="75%">
+                  <stop offset="0%" stopColor="#fecaca" />
+                  <stop offset="35%" stopColor="#dc2626" />
+                  <stop offset="100%" stopColor="#450a0a" />
+                </radialGradient>
                 <filter id="surface-shadow"><feGaussianBlur stdDeviation="18" /></filter>
               </defs>
-              <ellipse cx="375" cy="380" rx="260" ry="48" fill="#631b42" opacity=".22" filter="url(#surface-shadow)" />
+              <ellipse cx="375" cy="380" rx="260" ry="48" fill="#475569" opacity=".18" filter="url(#surface-shadow)" />
               <g className="surface-cells">
                 {surfaceCells.map((cell) => <polygon key={cell.key} points={cell.points} fill={cell.fill} />)}
               </g>
@@ -237,16 +246,17 @@ export default function GradientDescent() {
                 ))}
               </g>
               <circle cx={finalPoint.x} cy={finalPoint.y} r="9" className="target-ring" />
+              <ellipse cx={ball.x + 8} cy={ball.y + 13} rx="17" ry="5" className="ball-shadow" />
               <g transform={`translate(${ball.x} ${ball.y}) rotate(${rotation})`}>
-                <circle r="14" className="descent-ball" />
+                <circle r="15" className="descent-ball" />
                 <path d="M -8 0 H 8" className="ball-stripe" />
-                <circle cx="-4" cy="-5" r="3" className="ball-highlight" />
+                <circle cx="-5" cy="-6" r="4" className="ball-highlight" />
               </g>
             </svg>
             <div className="map-legend">
               <span><i className="legend-ball" /> Start</span>
               <span><i className="legend-path" /> Descent path</span>
-              <span><i className="legend-target" /> Local minimum</span>
+              <span><i className="legend-target" /> Global minimum</span>
             </div>
           </div>
 

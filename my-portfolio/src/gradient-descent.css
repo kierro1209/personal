@@ -15,7 +15,7 @@
 .theme-control:hover { color: #b91c1c; }
 .descent-intro { max-width: 680px; padding: 68px 0 44px; }
 .eyebrow { margin: 0 0 15px; color: #b91c1c; font-size: 12px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
-.descent-intro h1 { margin: 0; font-family: Georgia, serif; font-size: clamp(54px, 8vw, 92px); font-weight: 400; letter-spacing: -.07em; line-height: .9; }
+.descent-intro h1 { margin: 0; font-family: "OffBit", ui-monospace, monospace; font-size: clamp(48px, 7vw, 82px); font-weight: 700; letter-spacing: -.05em; line-height: .95; }
 .descent-intro h1 em { color: #b91c1c; font-style: italic; }
 .intro-copy { max-width: 510px; margin: 28px 0 0; color: #475569; font-size: 16px; line-height: 1.7; }
 .descent-layout { display: grid; grid-template-columns: minmax(0, 1fr) 286px; gap: 20px; align-items: stretch; }
@@ -31,6 +31,8 @@
 .path-dots circle { fill: #fff9f6; stroke: #6e2f59; stroke-width: 1.4; }
 .target-ring { fill: none; stroke: #fff8f1; stroke-width: 3; stroke-dasharray: 3 4; }
 .descent-ball { fill: #7f1d1d; stroke: #ffffff; stroke-width: 4; filter: drop-shadow(0 5px 3px rgba(48, 11, 40, .4)); }
+.descent-ball { fill: url("#ball-gradient"); }
+.ball-shadow { fill: #0f172a; opacity: .2; filter: blur(4px); }
 .ball-stripe { fill: none; stroke: #fecaca; stroke-width: 2; stroke-linecap: round; }
 .ball-highlight { fill: #fbd1c6; }
 .map-legend { display: flex; gap: 20px; padding: 13px 20px 17px; color: #64748b; font-size: 11px; }
