@@ -16,7 +16,7 @@ const DATA = {
   headline: "Hi, I'm Kiersten",
   title: "Student | Engineer | Community Leader",
   location: "Los Angeles, CA",
-  bio: `I'm currently a Data Science Intern at AstraZeneca supporting the Supply Chain teams in optimizing personalized patient care for diseases like Multiple Myeloma and Multiple Sclerosis. I also run VEST, a tech entrepreneurship/founder community at UCLA where I organize large scale events for the socal founder community and partner with VCs and startups to meet our exceptional talent. Great to meet you!`,
+  bio: `I'm currently a Data Science Intern at AstraZeneca supporting the Supply Chain teams in optimizing personalized patient care for rare disease & cancer patients. I also run VEST, a tech entrepreneurship/founder community at UCLA where I organize large scale events for the socal founder community and partner with VCs and startups to meet our exceptional talent. Great to meet you!`,
   aboutParagraph:
     `Outside of academics and work, I enjoy photography, journaling, marketing/creative directing and discovering new coffee spots. Currently, I'm exploring film photography and my favorite coffee spot is Re:Coffee!`,
   email: "kierroth12@g.ucla.edu",
