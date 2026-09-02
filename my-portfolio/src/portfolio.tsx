@@ -1,11 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
-import { Github, Linkedin, ExternalLink, Moon, Sun, MapPin } from "lucide-react";
+import { type ReactNode, useMemo } from "react";
+import { ArrowUpRight, Github } from "lucide-react";
 import { motion } from "framer-motion";
-
-// ✅ Single-file, drop-in React portfolio component
-// - Tailwind for styling
-// - Dark mode toggle
-// - Edit the DATA object below
 
 const BASE = import.meta.env.BASE_URL;
 const asset = (p?: string) =>
@@ -14,117 +9,137 @@ const asset = (p?: string) =>
 const DATA = {
   name: "Kiersten Roth",
   headline: "Hi, I'm Kiersten",
-  title: "Student | Engineer | Community Leader",
+  title: "Student, engineer, and community builder",
   location: "Los Angeles, CA",
-  bio: `I'm currently a Data Science Intern at AstraZeneca supporting the Supply Chain teams in optimizing personalized patient care for rare disease & cancer patients. I also run VEST, a tech entrepreneurship/founder community at UCLA where I organize large scale events for the socal founder community and partner with VCs and startups to meet our exceptional talent. Great to meet you!`,
-  aboutParagraph:
-    `Outside of academics and work, I enjoy photography, journaling, marketing/creative directing and discovering new coffee spots. Currently, I'm exploring film photography and my favorite coffee spot is Re:Coffee!`,
+  summary:
+    "I work across data, product, and community — from supply chain analytics and health tech to founder ecosystems and operator events at UCLA.",
+  about: [
+    "I'm currently a Data Science Intern at AstraZeneca supporting supply chain teams focused on personalized care for rare disease and cancer patients.",
+    "I also run VEST at UCLA, where I organize founder-focused programming, partner with startups and VCs, and help connect exceptional student builders to opportunities.",
+    "Outside of work and school, I enjoy photography, journaling, marketing, creative direction, and finding new coffee spots around LA.",
+  ],
   email: "kierroth12@g.ucla.edu",
   socials: {
     github: "https://github.com/kierro1209",
     linkedin: "https://www.linkedin.com/in/kiersten-roth/",
     website: "https://github.com/kierro1209/personal",
-    X: "https://x.com/kierrroth"
+    x: "https://x.com/kierrroth",
   },
-  // Education entries
-  education: [
-    {
-      logo: asset("/logos/ucla.png"), // put logo image in public/logos
-      school: "University of California, Los Angeles",
-      degree: "B.S. Statistics & Data Science (Minors: Data Science Engineering, Bioinformatics)",
-      time: "2024 – 2028 ",
-      details: "GPA 3.85. Coursework: Linear Algebra, SQL, Data Structures and Algorithms, OOP (Java/C++/Python), R programming, Regression and Modelling Techniques, ML Methods, Computational Genomics, Theoretical Statistics, Experimental Design",
-    },
+  education: {
+    logo: asset("/logos/ucla.png"),
+    school: "University of California, Los Angeles",
+    degree: "B.S. Statistics & Data Science",
+    minors: "Minors in Data Science Engineering and Bioinformatics",
+    time: "2024 – 2028",
+    details:
+      "GPA 3.85. Coursework spans linear algebra, SQL, data structures and algorithms, OOP, regression, machine learning, computational genomics, theoretical statistics, and experimental design.",
+  },
+  toolkit: [
+    "Python",
+    "Pandas",
+    "SQL",
+    "FastAPI",
+    "React",
+    "TypeScript",
+    "Firebase",
+    "Docker",
+    "Airflow",
+    "PyTorch",
+    "Tailwind",
+    "Figma",
   ],
-  // Experience entries
   experiences: [
     {
       logo: asset("/logos/AZ-logo.png"),
       title: "Data Science Intern",
       org: "AstraZeneca",
       time: "June 2026 – Present",
-      details: "Working under the Cell Thereapy Technical Operations division to analyze supply chain routing, performance, distribution, and network data to support efficient and effective patient care.",
+      details:
+        "Analyzing supply chain routing, performance, distribution, and network data within Cell Therapy Technical Operations to support more reliable patient care.",
     },
     {
       logo: asset("/logos/greenopia.png"),
       title: "Founding Data and Software Engineering Intern",
       org: "Greenopia",
       time: "June 2025 – Present",
-      details: "Engineered internal customer management tools, enriched over 50k business's data for production, built backend architecture to automate data transfer for over 400 businesses into mobile app. I also built out an API layer to unify our data ingestion pipeline from business onboarding to production view in our mobile app."},
+      details:
+        "Built internal tooling, enriched 50k+ business records, automated data transfer for 400+ businesses, and created API infrastructure across onboarding and production flows.",
+    },
     {
       logo: asset("/logos/VEST-Logo.PNG"),
       title: "President of VEST // Marketing Director",
       org: "VEST @ UCLA",
       time: "Jan 2025 – Present",
-      details: "Lead UCLA's premier tech-focused entreprenuership club, securing sponsorships with YC-backed companies and maintaining VC relationships with major firms to help fund UCLA student founders. I plan events in partnership with other companies, VCs, and entrepreneurship orgs as well as direct recruitment, internal programming, and leadership. As marketing director, I grew our views to over 117k+ and collaborated with our design team to create a brand kit. Prev Patnerships: Cognition, Manus (acquired by Meta), Codex, KP Fellows, EF, Upfront, a16z, Notable Captial, ZFellows, Happenstance AI, Julius AI, BCV",
+      details:
+        "Lead UCLA's tech entrepreneurship community, shape founder programming, secure partnerships, and grow the club's audience and brand across the SoCal startup ecosystem.",
     },
     {
       logo: asset("/logos/dsu-logo.png"),
       title: "Data Analyst",
       org: "Data Science Union",
       time: "Mar 2025 – Present",
-      details: "Built part of production pipeline for Michelin Connected Fleet's braking intelligence system, reducing individual reporting times by 20%.",
+      details:
+        "Built part of the production pipeline for Michelin Connected Fleet's braking intelligence system, reducing reporting time by 20%.",
     },
     {
       logo: asset("/logos/bhc.png"),
       title: "Director of Technology // Project Manager",
       org: "Bruin Health Consulting",
       time: "June 2025 – Present",
-      details: "Built MVP for consumer facing platform for Greenopia, built app for startup accelerator that was integrated into their current app suite, and building backend architecture solutions for Fortune 500 Pharmaceutical Companies.",
+      details:
+        "Built MVPs and backend architecture for startup and enterprise healthcare-facing products, including work for Greenopia and pharma teams.",
     },
     {
       logo: asset("/logos/bsa-logo.png"),
       title: "Machine Learning Researcher // Data Journalist",
       org: "Bruin Sports Analytics",
       time: "Oct 2024 – Jun 2025",
-      details: "Developed XGBoost models on shot prediction using on court factors, published article analyzing F1 pit stop times, worked on NFL draft Prediction model.",
+      details:
+        "Developed sports analytics models, published an F1 analysis article, and explored predictive modeling across basketball and NFL projects.",
     },
     {
       logo: asset("/logos/uci_logo.png"),
       title: "Student Researcher",
       org: "COSMOS @ UCI",
       time: "July 2023",
-      details: "Alzheimer’s research applying computational methods to test if low-cost methods are effective at determining brain degeneration in patients.",
+      details:
+        "Applied computational methods to Alzheimer’s research to test low-cost approaches for identifying brain degeneration.",
     },
     {
       logo: asset("/logos/stanford logo.png"),
       title: "AI Institute Student",
-      org: "Stanford Pre-Collegiate AI Insitute",
+      org: "Stanford Pre-Collegiate AI Institute",
       time: "July 2022",
-      details: "Studied AI techniques and mathematics under Stanford PhD students, completing undergrad level problem sets as a sophomore in high school.",
+      details:
+        "Studied AI techniques and core mathematics under Stanford PhD students while completing undergraduate-level problem sets in high school.",
     },
   ],
-  // Projects entries
   projects: [
     {
       title: "Greenopia Data Redesign & App",
       blurb:
-        "Reorganized entire database of 300k+ businesses, led data engineering efforts, building web scraping pipelines to enrich 30k+ business's data, built frontend pages of web app, collaborated on data strategy with executive leadership.",
+        "Reorganized a 300k+ business database, led data engineering work, built enrichment pipelines, and contributed frontend pages for the consumer app.",
       tech: ["Firebase", "Sheets", "Pandas", "React"],
       links: { live: "https://app.greenopia.com/discover/", repo: "" },
-      logo: asset("/logos/greenopia.png"), // small assoc logo bottom-right (optional)
+      logo: asset("/logos/greenopia.png"),
     },
     {
-      title: "Genetic Pathogencity Classifier",
-      blurb:
-        "Work in Progress Using open source genetic data to classify possible expression levels.",
+      title: "Genetic Pathogenicity Classifier",
+      blurb: "A work-in-progress classifier using open genetic datasets to estimate possible expression outcomes.",
       tech: ["Python", "RandomForest", "ClinVar", "React"],
-      
       links: { live: "", repo: "https://github.com/kierro1209/genetic_variant_classifier" },
       logo: asset("/logos/dsu-logo.png"),
     },
     {
       title: "BR.AI.N Segmentation UI",
-      blurb:
-        "Medical imaging toolkit: U-Net inference with a React analytics dashboard for clinicians.",
+      blurb: "Medical imaging toolkit pairing U-Net inference with a React analytics dashboard for clinicians.",
       tech: ["PyTorch", "React", "FastAPI"],
       links: { live: "", repo: "https://github.com/kierro1209/br.ai.n" },
-      logo: '',
+      logo: "",
     },
     {
       title: "Lookbk Content Automation App",
-      blurb:
-        "Create short-form videos using keywords and reactions. I designed the stitching feature.",
+      blurb: "A short-form video creation workflow built around keywords and reactions, with a stitching feature I designed.",
       tech: ["RunwayML", "MoviePy", "FastAPI"],
       links: { live: "", repo: "" },
       logo: asset("/logos/VEST-Logo.PNG"),
@@ -132,7 +147,7 @@ const DATA = {
     {
       title: "Michelin Connected Fleet Braking Intelligence System",
       blurb:
-        "I built a portion of the pipeline responsible for dynamically calculating possible reductions in braking score thresholds before scores may be reported and used by drivers, fleet manageers, and maintenance crews.",
+        "Part of the pipeline responsible for dynamically calculating reductions in braking score thresholds before scores are surfaced to drivers and fleet teams.",
       tech: ["Python", "Pandas"],
       links: { live: "", repo: "" },
       logo: asset("/logos/MCF-logo.png"),
@@ -140,353 +155,234 @@ const DATA = {
     {
       title: "Polaris",
       blurb:
-        "🏆 Winner of Best Social Impact Award. For LA Hacks 2026, my team and I built an agentic hospital paging system, integrating options for EHR & voice-dictated descriptions to be used as context for paging as well as a visual communication interface for hospital operators to view clinician locations within medical buildings.",
+        "Best Social Impact Award winner at LA Hacks 2026 — an agentic hospital paging system with EHR context, voice-dictated notes, and clinician location visibility.",
       tech: ["Fetch AI", "Python", "FastAPI", "Framer"],
-      links: { live: "https://devpost.com/software/polaris-mh7rd8?_gl=1*1pbtemz*_gcl_au*MTUwMjc4NzMxMC4xNzc3MTkwNjMx*_ga*MTM0OTExNzU4OS4xNzc3MTkwNjMy*_ga_0YHJK3Y10M*czE3NzcyMzYyOTEkbzIkZzEkdDE3NzcyMzc3MTQkajQ3JGwwJGgw", repo: "" },
+      links: {
+        live: "https://devpost.com/software/polaris-mh7rd8?_gl=1*1pbtemz*_gcl_au*MTUwMjc4NzMxMC4xNzc3MTkwNjMx*_ga*MTM0OTExNzU4OS4xNzc3MTkwNjMy*_ga_0YHJK3Y10M*czE3NzcyMzYyOTEkbzIkZzEkdDE3NzcyMzc3MTQkajQ3JGwwJGgw",
+        repo: "",
+      },
       logo: asset("/logos/lahacks-logo.png"),
     },
     {
-      title: "Sex-Stratified Statin Toxicity Prediction: A Multi-Modal ML Approach to Incorporating Hormonal Covariates",
+      title: "Statin Toxicity Prediction",
       blurb:
-        "🏆 Winner of Best Software/Algorithm Award. For InTranscription's Biohackathon 2026, we built an ML architecture that quantifies risk for female patients who may require statin medication.",
+        "Best Software/Algorithm Award winner for a multimodal ML workflow that estimates statin risk with hormonal covariates in view.",
       tech: ["SciKitLearn", "PharmGKB", "NHANES", "FAERS"],
       links: { live: "", repo: "https://github.com/kierro1209/statin_predictor" },
       logo: asset("/logos/inT-logo.png"),
     },
     {
-      title: "Tokenizing Patient Medical History for Resource Allocation Optimization",
+      title: "Tokenizing Patient Medical History",
       blurb:
-        "My team and I designed a token structure to capture patient medical history as a sequence, applying next-token generation and reinforcement learning to predict when, where, and what they'll need to optimize resource allocation at scale to help improve care for millions.",
+        "Designed a token structure for patient history and paired it with next-token generation and RL ideas to improve care-resource forecasting.",
       tech: ["Python", "PyTorch", "SB3"],
       links: { live: "", repo: "" },
       logo: asset("/logos/datafest-logo.png"),
     },
     {
       title: "Daily Newspaper Agent System",
-      blurb:
-        "I read a lot of news, substack articles, and research papers so I made a couple agents and a frontend to collect a daily update on topics I'm interested in!",
-      tech: ["Python", "Github Actions", "Gemini Flash 2.5"],
-      links: { live: "https://x.com/kierrroth/status/2079599506119880718?s=20", repo: "https://github.com/kierro1209/sunday_news" },
-      logo: ''
+      blurb: "A personalized daily news workflow that collects updates from the topics, papers, and articles I care about most.",
+      tech: ["Python", "GitHub Actions", "Gemini Flash 2.5"],
+      links: {
+        live: "https://x.com/kierrroth/status/2079599506119880718?s=20",
+        repo: "https://github.com/kierro1209/sunday_news",
+      },
+      logo: "",
     },
     {
       title: "LA Transit Monitoring System",
-      blurb:
-        "Currently, trying to learn systems & inference more deeply so I'm creating a better model to predict when my bus comes in the morning for class.",
-      tech: [ "FastAPI", "GTFS"],
+      blurb: "An ongoing systems and inference project to better predict when my bus will actually show up before class.",
+      tech: ["FastAPI", "GTFS"],
       links: { live: "", repo: "" },
-      logo: ''
-    }
-
-  ],
-  // Articles / Publications entries
-  articles: [
-    {
-      logo: asset("/logos/bsa-logo.png"),
-      title: "Is it Already Over? Examining F1 Pit Stop Times and their Effect on Winning",
-      blurb: "Exploratory + predictive analysis of race strategy and driver performance; published piece with visuals.",
-      link: "https://www.bruinsportsanalytics.com/post/f1-pitstops-time",
-    },
-    {
-      logo: asset("/logos/uci_logo.png"),
-      title: "Alzheimer's Research — COSMOS @ UCI",
-      blurb: "Applied ML and exploratory analysis to determine if cognitive pre-screen tests can effectively predict a patient's progression.",
-      link: "https://drive.google.com/file/d/1uX8vIZFOtNuzLQLcfNfYrmrbNGHqJpdN/view?usp=sharing",
+      logo: "",
     },
   ],
-  // Skills list
-  skills: [
-    "Python",
-    "Pandas",
-    "SQL",
-    "FastAPI",
-    "Supabase",
-    "Firebase",
-    "Docker",
-    "Airflow",
-    "React",
-    "TypeScript",
-    "Tailwind",
-    "Figma",
-    "ETL",
-    "Pytorch",
-    "Tensorflow/Keras",
-    "R",
-    "AWS RDS",
-    "Microsoft Suite",
-    "Hugging Face",
-    "Model Development",
-    "Predictive and Exploratory Analytics",
-    "Java",
-    "C++"
+  events: [
+    {
+      title: "VEST Founder Fireside: From Campus to Seed",
+      time: "Mock event · October 2026",
+      details:
+        "An evening conversation with two UCLA alumni founders on finding early customers, choosing a cofounder, and raising a first institutional round.",
+    },
+    {
+      title: "SoCal Student Builder Demo Night",
+      time: "Mock event · November 2026",
+      details:
+        "A fast-paced showcase for student teams to demo products to peers, operators, and early-stage investors, followed by open feedback and founder matching.",
+    },
+    {
+      title: "Zero-to-One Product Sprint",
+      time: "Mock event · January 2027",
+      details:
+        "A hands-on build session pairing technical students with designers to turn one sharply defined problem into a testable prototype in a single afternoon.",
+    },
+  ],
+  currently: [
+    {
+      label: "Learning",
+      text: "Going deeper on systems and inference through the LA Transit Monitoring System.",
+    },
+    {
+      label: "Reading",
+      text: "News, Substack posts, and research papers — enough to justify building my own daily newspaper agent workflow.",
+    },
+    {
+      label: "Exploring",
+      text: "Film photography, creative direction, and better ways to tell technical stories visually.",
+    },
+    {
+      label: "Offline",
+      text: "Trying new coffee spots in LA. Current favorite: Re:Coffee.",
+    },
   ],
 };
 
 export default function Portfolio() {
-  const [dark, setDark] = useState(false);
-  useEffect(() => {
-  document.documentElement.classList.toggle('dark', dark);
-  localStorage.setItem('theme', dark ? 'dark' : 'light');
-}, [dark]);
-
-
   const year = useMemo(() => new Date().getFullYear(), []);
 
   return (
-
-    <div className="min-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-100">
-      {/* Custom font face: put your .ttf or .woff2 in /public/fonts and update path/name */}
+    <div className="min-h-screen overflow-x-hidden bg-black font-mono text-[#c8c8c8] selection:bg-[#d8d8d8] selection:text-black">
       <style>{`
         @font-face {
           font-family: 'OffBit';
           src: url('${BASE}/fonts/OffBit-Bold.ttf') format('truetype');
-          font-weight: 100 900;
-          font-style: normal;
           font-display: swap;
         }
-        :root {
-          --font-display: 'OffBit', 'Poppins', system-ui, sans-serif;
-          --font-body: 'Inter', system-ui, sans-serif;
+        html { scroll-behavior: smooth; background: #000; }
+        body { margin: 0; }
+        .star-field {
+          background-image:
+            radial-gradient(circle at 15% 20%, rgba(255,255,255,.24) 0 1px, transparent 1.5px),
+            radial-gradient(circle at 78% 12%, rgba(255,255,255,.18) 0 1px, transparent 1.5px),
+            radial-gradient(circle at 62% 74%, rgba(255,255,255,.1) 0 1px, transparent 1.5px);
+          background-size: 211px 211px, 307px 307px, 137px 137px;
         }
-        .font-display { font-family: var(--font-display); }
-        .font-body { font-family: var(--font-body); }
+        .scanlines { background: repeating-linear-gradient(0deg, transparent 0 3px, rgba(255,255,255,.009) 3px 4px); }
+        .display { font-family: 'OffBit', ui-monospace, monospace; }
+        .ascii-card { box-shadow: inset 0 0 0 1px rgba(255,255,255,.025); }
+        .project-scroll { scrollbar-color: #555 #090909; scrollbar-width: thin; }
       `}</style>
 
-      {/* Header */}
-      <header className="sticky top-0 z-30 backdrop-blur supports-[backdrop-filter]:bg-white/70 dark:supports-[backdrop-filter]:bg-slate-950/60 border-b border-slate-200/60 dark:border-slate-800">
-        <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-          <span className="font-display text-lg font-semibold tracking-tight">{DATA.name}</span>
-          <nav className="hidden md:flex items-center gap-6 text-sm">
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#articles">Articles</a>
-            <a href="#skills">Skills</a>
-            <a href="#contact">Contact</a>
+      <div className="star-field pointer-events-none fixed inset-0 opacity-20" aria-hidden="true" />
+      <div className="scanlines pointer-events-none fixed inset-0" aria-hidden="true" />
+
+      <header className="sticky top-0 z-40 border-b border-[#2b2b2b] bg-black/90 backdrop-blur-md">
+        <div className="mx-auto flex max-w-6xl items-center justify-between gap-5 px-4 py-3 text-[11px] uppercase tracking-[0.18em] sm:px-6">
+          <a href="#top" className="text-[#e0e0e0]">KIERSTEN ROTH</a>
+          <nav className="hidden gap-5 text-[#888888] md:flex">
+            {[["about", "01"], ["experiences", "02"], ["projects", "03"], ["events", "04"], ["currently", "05"]].map(([id, number]) => (
+              <a key={id} href={`#${id}`} className="transition hover:text-white">[{number}] {id}</a>
+            ))}
           </nav>
-          <div className="flex items-center gap-3">
-            <button onClick={() => setDark((d) => !d)}>{dark ? <Sun /> : <Moon />}</button>
-          </div>
+          <a href={`mailto:${DATA.email}`} className="border border-[#555] px-3 py-1.5 text-[#d8d8d8] transition hover:border-white hover:text-white">EMAIL ↗</a>
         </div>
       </header>
 
-      <main className="mx-auto max-w-6xl px-4">
-        {/* Hero */}
-        <section className="py-14 md:py-20">
-          <div className="grid gap-10 md:grid-cols-[1.4fr_1fr] items-center">
-            {/* LEFT: text + bio + links */}
-            <div>
-              <h1 className="font-display text-5xl md:text-6xl font-bold">
-                {DATA.headline}
-              </h1>
-              <h2 className="mt-2 font-display text-xl text-slate-600 dark:text-slate-400">
-                {DATA.title}
-              </h2>
-              <p className="mt-4 max-w-2xl text-slate-700 dark:text-slate-300">
-                {DATA.bio}
-              </p>
-
-              {/* link row */}
-              <div className="mt-6 flex items-center gap-3 flex-wrap">
-                <a
-                  href={DATA.socials.github}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-sm"
-                >
-                  <Github className="size-4" /> GitHub
-                </a>
-                <a
-                  href={DATA.socials.linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-sm"
-                >
-                  <Linkedin className="size-4" /> LinkedIn
-                </a>
-                <a
-                  href={DATA.socials.X}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 text-sm"
-                >
-                  <img
-                    src= {asset("/logos/x.svg")}
-                    alt=""
-                    className="size-4"
-                  />
-                </a>
-              </div>
-
-              {/* location BELOW the links */}
-              <div className="mt-3 flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-                <MapPin className="size-4" />
-                {DATA.location}
-              </div>
-            </div>
-
-            {/* RIGHT: photo */}
-            <div className="relative md:justify-self-end w-full max-w-[360px]">
-              <div className="aspect-[4/5] overflow-hidden rounded-3xl shadow-lg ring-1 ring-slate-700/50">
-                <img
-                  src={asset("/IMG_0249.jpg")}
-                  alt="Kiersten Roth"
-                  className="h-full w-full object-cover"
-                />
-              </div>
+      <main id="top" className="relative mx-auto max-w-6xl px-4 sm:px-6">
+        <section className="grid min-h-[72vh] items-center gap-12 py-20 lg:grid-cols-[1fr_340px]">
+          <div>
+            <p className="text-xs uppercase tracking-[.2em] text-[#888]">Portfolio · Los Angeles, CA</p>
+            <h1 className="display mt-5 text-6xl uppercase leading-[.9] text-[#ededed] sm:text-8xl">Kiersten Roth</h1>
+            <p className="mt-5 text-sm uppercase tracking-[.2em] text-[#bbb]">{DATA.title}</p>
+            <p className="mt-8 max-w-2xl text-base leading-8 text-[#aaa]">{DATA.summary}</p>
+            <div className="mt-9 flex flex-wrap gap-x-6 gap-y-3 text-xs uppercase tracking-[0.16em]">
+              <TextLink href={DATA.socials.github}>github ↗</TextLink>
+              <TextLink href={DATA.socials.linkedin}>linkedin ↗</TextLink>
+              <TextLink href={`mailto:${DATA.email}`}>email ↗</TextLink>
             </div>
           </div>
+          <pre className="hidden border-l border-[#333] pl-10 text-[11px] leading-[1.2] text-[#666] lg:block" aria-hidden="true">{`         .        *
+    *       _..._
+        .-'     '-.
+  .    /   .---.   \\
+      |   /     \\   |
+       \\  \\_____/  /
+    *   '-._____.-'   .
+            |
+       -----+-----
+      [  online  ]`}</pre>
         </section>
-
-        {/* About (paragraph + long cards for education & experience) */}
-        <section id="about" className="py-10 md:py-14">
-          <h2 className="font-display text-2xl md:text-3xl font-semibold tracking-tight">About</h2>
-          <p className="mt-3 max-w-3xl text-slate-700 dark:text-slate-300 font-body">{DATA.aboutParagraph}</p>
-
-          <div className="mt-6 rounded-3xl border border-slate-200 p-5 dark:border-slate-800">
-            <h3 className="font-display text-xl font-semibold">Education</h3>
-            <div className="mt-3 flex flex-col gap-3">
-              {DATA.education.map((e) => (
-                <LongCard key={e.school} logo={e.logo} title={e.school} subtitle={e.degree} rightTag={e.time} body={e.details} />
-              ))}
+        <Section id="about" number="01" title="About" description="Background, education, and the tools I use.">
+          <div className="grid gap-px border border-[#333333] bg-[#333333] lg:grid-cols-[1.2fr_.8fr]">
+            <div className="bg-[#050505] p-6 sm:p-8">
+              <AsciiLabel>INTRODUCTION</AsciiLabel>
+              <div className="mt-6 space-y-5 leading-7 text-[#aaaaaa]">{DATA.about.map((paragraph, index) => <p key={paragraph}><span className="mr-3 text-[#666666]">{String(index + 1).padStart(2, "0")}:</span>{paragraph}</p>)}</div>
+              <AsciiLabel className="mt-9">TOOLKIT</AsciiLabel>
+              <div className="mt-4 flex flex-wrap gap-2">{DATA.toolkit.map((item) => <Tag key={item}>{item}</Tag>)}</div>
             </div>
-
-            <h3 className="mt-6 font-display text-xl font-semibold">Experience</h3>
-            <div className="mt-3 flex flex-col gap-3">
-              {DATA.experiences.map((x) => (
-                <LongCard key={x.title + x.org} logo={x.logo} title={`${x.title} — ${x.org}`} rightTag={x.time} body={x.details} />
-              ))}
+            <div className="bg-[#050505] p-6 sm:p-8">
+              <AsciiLabel>EDUCATION</AsciiLabel>
+              <p className="display mt-6 text-2xl uppercase text-[#e5e5e5]">{DATA.education.school}</p>
+              <p className="mt-2 text-xs tracking-[.15em] text-[#ffcb6b]">{DATA.education.time}</p>
+              <p className="mt-7 text-[#cccccc]">{DATA.education.degree}</p>
+              <p className="mt-2 text-sm text-[#888888]">{DATA.education.minors}</p>
+              <p className="mt-6 text-sm leading-7 text-[#aaaaaa]">{DATA.education.details}</p>
             </div>
           </div>
-        </section>
+        </Section>
 
-        {/* Projects */}
-        <section id="projects" className="py-10 md:py-14">
-          <SectionHeader title="Projects" />
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {DATA.projects.map((p) => (
-              <ProjectCard key={p.title} project={p} />
-            ))}
-          </div>
-        </section>
+        <Section id="experiences" number="02" title="Experience" description="Roles across data, health, startups, research, and community.">
+          <div className="border-t border-[#333333]">{DATA.experiences.map((experience, index) => (
+            <article key={`${experience.title}-${experience.org}`} className="grid gap-4 border-b border-[#333333] py-6 transition hover:bg-[#0a0a0a] md:grid-cols-[52px_1fr_180px] md:px-4">
+              <span className="text-xs text-[#666666]">[{String(index + 1).padStart(2, "0")}]</span>
+              <div><h3 className="display text-xl uppercase text-[#e5e5e5]">{experience.title}</h3><p className="mt-1 text-sm text-[#cccccc]">{experience.org}</p><p className="mt-4 max-w-3xl text-sm leading-7 text-[#aaaaaa]">{experience.details}</p></div>
+              <p className="text-xs uppercase tracking-[.12em] text-[#888888] md:text-right">{experience.time}</p>
+            </article>
+          ))}</div>
+        </Section>
 
-        {/* Articles */}
-        <section id="articles" className="py-10 md:py-14">
-          <SectionHeader title="Articles & Publications" />
-          <div className="mt-6 flex flex-col gap-4">
-            {DATA.articles.map((a) => (
-              <LongCard key={a.title} logo={a.logo} title={a.title} body={a.blurb} link={a.link} rightTag="Publication" />
-            ))}
-          </div>
-        </section>
+        <Section id="projects" number="03" title="Projects" description="Selected technical and product work. Scroll sideways to browse.">
+          <div className="project-scroll flex snap-x gap-3 overflow-x-auto pb-5">{DATA.projects.map((project, index) => <ProjectCard key={project.title} project={project} index={index} />)}</div>
+        </Section>
 
-        {/* Skills */}
-        <section id="skills" className="py-10 md:py-14">
-          <SectionHeader title="Skills" />
-          <div className="mt-6 flex flex-wrap gap-2">
-            {DATA.skills.map((s) => (
-              <span key={s} className="rounded-full border border-slate-200 dark:border-slate-800 px-3 py-1 text-sm bg-slate-100 dark:bg-slate-900">{s}</span>
-            ))}
-          </div>
-        </section>
+        <Section id="events" number="04" title="Events" description="Founder and builder programming I organize. These entries are mock examples.">
+          <div className="grid gap-4 md:grid-cols-3">{DATA.events.map((event, index) => (
+            <article key={event.title} className="ascii-card border border-[#333] bg-[#050505] p-6"><p className="text-xs text-[#888]">EVENT_{String(index + 1).padStart(2, "0")} · {event.time}</p><h3 className="display mt-5 text-xl uppercase text-[#e5e5e5]">{event.title}</h3><p className="mt-4 text-sm leading-7 text-[#aaa]">{event.details}</p></article>
+          ))}</div>
+        </Section>
 
-        {/* Contact */}
-        <section id="contact" className="py-10 md:py-16">
-          <SectionHeader title="Get in touch" />
-          <div className="mt-6 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
-            <a href={DATA.socials.linkedin} className="inline-flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2 text-sm hover:bg-slate-50 dark:border-slate-800 dark:hover:bg-slate-900"><Linkedin className="size-4" /> Connect on LinkedIn</a>
-          </div>
-        </section>
+        <Section id="currently" number="05" title="Currently" description="A few things that have my attention right now.">
+          <div className="grid gap-px border border-[#333333] bg-[#333333] sm:grid-cols-2">{DATA.currently.map((item) => (
+            <div key={item.label} className="bg-[#050505] p-6"><p className="text-xs uppercase tracking-[.2em] text-[#cccccc]">● {item.label}</p><p className="mt-4 text-sm leading-7 text-[#aaaaaa]">{item.text}</p></div>
+          ))}</div>
+        </Section>
       </main>
 
-      <footer className="border-t border-slate-200 dark:border-slate-800">
-        <div className="mx-auto max-w-6xl px-4 py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-sm text-slate-500 dark:text-slate-400">
-          <span>© {year} {DATA.name}. Built with React & Tailwind.</span>
-          <a href={`${BASE}gradient-descent.html`} className="text-red-700 dark:text-red-400 hover:opacity-80">Explore gradient descent →</a>
+      <footer className="relative mt-20 border-t border-[#333333]">
+        <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-8 text-[10px] uppercase tracking-[.18em] text-[#888888] sm:flex-row sm:justify-between sm:px-6">
+          <span>© {year} {DATA.name}</span>
+          <a href={`${BASE}gradient-descent.html`} className="transition hover:text-[#cccccc]">[gradient descent]</a>
         </div>
       </footer>
     </div>
   );
 }
 
-function SectionHeader({ title }: { title: string }) {
-  return (
-    <h2 className="font-display text-2xl md:text-3xl font-semibold tracking-tight">{title}</h2>
-  );
+function Section({ id, number, title, description, children }: { id: string; number: string; title: string; description: string; children: ReactNode }) {
+  return <section id={id} className="scroll-mt-20 py-14 sm:py-20"><div className="mb-8 grid gap-3 border-b border-[#333] pb-5 md:grid-cols-[70px_1fr_auto] md:items-end"><span className="text-xs text-[#888]">[{number}]</span><h2 className="display text-3xl uppercase text-[#e5e5e5] sm:text-5xl">{title}</h2><p className="max-w-md text-xs leading-5 text-[#888] md:text-right">{description}</p></div>{children}</section>;
 }
 
-function LongCard({ logo, title, subtitle, rightTag, body, link }: { logo?: string; title: string; subtitle?: string; rightTag?: string; body?: string, link?:string }) {
-  return (
-    <div className="relative flex gap-4 items-start rounded-2xl border border-slate-200 p-4 dark:border-slate-800 bg-slate-50 dark:bg-slate-900">
-      {/* Logo */}
-      <div className="h-14 w-14 rounded-xl overflow-hidden grid place-items-center bg-slate-100 dark:bg-slate-800 shrink-0">
-        {logo ? (
-          <img src={logo} alt="logo" className="h-full w-full object-contain" />
-        ) : (
-          <div className="text-xs text-slate-500">Logo</div>
-        )}
-      </div>
-
-      {/* Content */}
-      <div className="flex-1">
-        <div className="flex items-start justify-between gap-3">
-          <div>
-            <div className="font-medium">{title}</div>
-            {subtitle && (
-              <div className="text-sm text-slate-500 dark:text-slate-400">
-                {subtitle}
-              </div>
-            )}
-          </div>
-          {rightTag && (
-            <span className="text-xs rounded-full border border-slate-200 px-2 py-0.5 dark:border-slate-700">
-              {rightTag}
-            </span>
-          )}
-        </div>
-
-        {body && (
-          <p className="mt-2 text-sm text-slate-700 dark:text-slate-300">
-            {body}
-          </p>
-        )}
-
-        {/* Optional link */}
-        {link && (
-          <div className="mt-2">
-            <a
-              href={link}
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm underline text-red-700 dark:text-red-400 hover:opacity-80"
-            >
-              Read more →
-            </a>
-          </div>
-        )}
-      </div>
-    </div>
-  );
+function AsciiLabel({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return <p className={`text-xs uppercase tracking-[.2em] text-[#aaa] ${className}`}>[ {children} ]</p>;
 }
 
-function ProjectCard({ project }: { project: { title: string; blurb: string; tech: string[]; links: { live?: string; repo?: string }; logo?: string } }) {
+function Tag({ children }: { children: ReactNode }) {
+  return <span className="border border-[#444] px-2.5 py-1 text-[11px] uppercase tracking-[.1em] text-[#aaa]">{children}</span>;
+}
+
+function TextLink({ href, children }: { href: string; children: ReactNode }) {
+  const external = href.startsWith("http");
+  return <a href={href} target={external ? "_blank" : undefined} rel={external ? "noreferrer" : undefined} className="border-b border-[#555] pb-1 text-[#ccc] transition hover:border-white hover:text-white">{children}</a>;
+}
+
+function ProjectCard({ project, index }: { project: { title: string; blurb: string; tech: string[]; links: { live?: string; repo?: string }; logo?: string }; index: number }) {
   return (
-    <motion.article initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.4 }} className="group relative rounded-3xl border border-slate-200 bg-white p-5 shadow-sm ring-1 ring-transparent hover:ring-red-200 dark:border-slate-800 dark:bg-slate-900 dark:hover:ring-red-900/40">
-      <h3 className="mt-4 font-display text-lg font-semibold">{project.title}</h3>
-      <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{project.blurb}</p>
-      <div className="mt-3 flex flex-wrap gap-2">
-        {project.tech.map((t) => (
-          <span key={t} className="rounded-full bg-slate-100 px-2.5 py-1 text-xs dark:bg-slate-800">{t}</span>
-        ))}
-      </div>
-      <div className="mt-4 flex items-center gap-3 text-sm">
-        {project.links.live && (
-          <a href={project.links.live} className="inline-flex items-center gap-1 rounded-lg border border-slate-200 px-2.5 py-1.5 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"><ExternalLink className="size-4" /> Live</a>
-        )}
-        {project.links.repo && (
-          <a href={project.links.repo} className="inline-flex items-center gap-1 rounded-lg border border-slate-200 px-2.5 py-1.5 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"><Github className="size-4" /> Code</a>
-        )}
-      </div>
-      {project.logo && <img src={project.logo} alt="logo" className="absolute bottom-3 right-3 h-7 w-7 object-contain opacity-80 rounded" />}
+    <motion.article initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-40px" }} className="group ascii-card flex min-h-64 w-[82vw] max-w-[340px] shrink-0 snap-start flex-col border border-[#333] bg-[#050505] p-5 transition hover:border-[#777] sm:w-[340px]">
+      <div className="flex items-center justify-between text-[10px] tracking-[.16em] text-[#888888]"><span>PROJECT_{String(index + 1).padStart(2, "0")}</span><span>{project.tech.length} tools</span></div>
+      <h3 className="display mt-6 text-xl uppercase leading-none text-[#e5e5e5] group-hover:text-white">{project.title}</h3>
+      <p className="mt-4 flex-1 text-sm leading-6 text-[#aaa]">{project.blurb}</p>
+      <div className="mt-6 flex flex-wrap gap-2">{project.tech.map((tech) => <Tag key={tech}>{tech}</Tag>)}</div>
+      {(project.links.live || project.links.repo) && <div className="mt-5 flex gap-5 text-xs uppercase tracking-[.12em]">{project.links.live && <a href={project.links.live} target="_blank" rel="noreferrer" className="flex items-center gap-1 text-[#bbb] hover:text-white">view <ArrowUpRight className="size-3" /></a>}{project.links.repo && <a href={project.links.repo} target="_blank" rel="noreferrer" className="flex items-center gap-1 text-[#bbb] hover:text-white"><Github className="size-3" /> source</a>}</div>}
     </motion.article>
   );
 }
