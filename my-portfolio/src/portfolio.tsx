@@ -199,7 +199,53 @@ const DATA = {
   //   collaborators: ["Optional partner", "Optional sponsor"],
   //   link: "https://optional-event-or-recap-link.com",
   // },
-  events: [] as HostedEvent[],
+  events: [
+    {
+       title: "The Builder's Lounge - LA Tech Week",
+       date: "October 2026",
+       location: "West LA",
+       role: "Organizer & host",
+       description: "Planning a matcha Jazz Bar for students, VCs, and startups to chat in a more relaxed setting with product demos and a keynote speaker",
+       collaborators: ["Rainfall Ventures", "Pareto Ventures", "Nexus SoCal", "USC Troy Labs", "Caltech Zero to One", "UCLA ACM", "Bruin AI", "Bruin Ventures", "Sundays in LA", "Ascend Consulting", "a16z"],
+       link: "",
+   },
+    {
+       title: "SoCal Networking Night",
+       date: "May 2026",
+       location: "West LA",
+       role: "Organizer & host",
+       description: "Gathered a curated group of 60 LA college students for a night of curated networking through Happenstance's custom platform built to find existing connections between people made for the event.",
+       collaborators: ["Happenstance", "Nexus", "Sundays in LA"],
+       link: "https://x.com/kierrroth/status/2084675730135523374?s=20",
+   },
+   {
+       title: "VEST X Julius AI San Francisco",
+       date: "July 2026",
+       location: "San Francisco",
+       role: "Organizer & host",
+       description: "Brought together VEST members interning in SF, 10 UCLA startup alumni, and Julius AI founding team together for a night of coversation with catering and a matcha bar",
+       collaborators: ["Julius AI"],
+       link: "https://x.com/kierrroth/status/2081081510225117635?s=20",
+   },
+   {
+       title: "VEST X Cognition Dinner",
+       date: "March 2026",
+       location: "Los Angeles",
+       role: "Organizer & host",
+       description: "Organized dinner with Cognition FDEs and VEST Members to chat as a part of our ongoing dinner series.",
+       collaborators: ["Cognition"],
+       link: "",
+   },
+   {
+       title: "VEST X Entrepreneurs First Dinner",
+       date: "May 2026",
+       location: "Los Angeles",
+       role: "Organizer & host",
+       description: "Organized dinner with EF Reps and VEST Members to chat as a part of our ongoing dinner series as well as set up office hours for members to meet with them 1-1.",
+       collaborators: ["Entrepreneurs First"],
+       link: "",
+   }
+  ] as HostedEvent[],
   // Articles / Publications entries
   articles: [
     {
