@@ -1,0 +1,7 @@
+{
+  "name": "personal-site",
+  "private": true,
+  "scripts": {
+    "build": "npm ci --prefix my-portfolio && npm run build --prefix my-portfolio"
+  }
+}
