@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Github, Linkedin, ExternalLink, Moon, Sun, MapPin } from "lucide-react";
+import { CalendarDays, Github, Linkedin, ExternalLink, Moon, Sun, MapPin, Users } from "lucide-react";
 import { motion } from "framer-motion";
 
 // ✅ Single-file, drop-in React portfolio component
@@ -10,6 +10,15 @@ import { motion } from "framer-motion";
 const BASE = import.meta.env.BASE_URL;
 const asset = (p?: string) =>
   p ? (p.startsWith("http") ? p : `${BASE}${p.replace(/^\/+/, "")}`) : "";
+type HostedEvent = {
+  title: string;
+  date: string;
+  location: string;
+  role: string;
+  description: string;
+  collaborators?: string[];
+  link?: string;
+};
 
 const DATA = {
   name: "Kiersten Roth",
@@ -179,6 +188,18 @@ const DATA = {
     }
 
   ],
+  // Events organized or hosted.
+  // Add entries using this shape:
+  // {
+  //   title: "Event name",
+  //   date: "Month YYYY",
+  //   location: "Venue or city",
+  //   role: "Organizer, host, moderator, etc.",
+  //   description: "What the event was, who it served, and your contribution.",
+  //   collaborators: ["Optional partner", "Optional sponsor"],
+  //   link: "https://optional-event-or-recap-link.com",
+  // },
+  events: [] as HostedEvent[],
   // Articles / Publications entries
   articles: [
     {
@@ -259,6 +280,7 @@ export default function Portfolio() {
           <nav className="hidden md:flex items-center gap-6 text-sm">
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
+            <a href="#events">Events</a>
             <a href="#articles">Articles</a>
             <a href="#skills">Skills</a>
             <a href="#contact">Contact</a>
@@ -362,11 +384,37 @@ export default function Portfolio() {
         {/* Projects */}
         <section id="projects" className="py-10 md:py-14">
           <SectionHeader title="Projects" />
-          <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <p className="mt-2 max-w-2xl text-sm text-slate-600 dark:text-slate-400">
+            Selected technical and product work. Scroll to browse the full collection.
+          </p>
+          <div
+            className="mt-6 flex snap-x snap-mandatory gap-4 overflow-x-auto pb-5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-red-700 [scrollbar-color:rgb(148_163_184)_transparent] [scrollbar-width:thin]"
+            role="region"
+            aria-label="Scrollable project collection"
+            tabIndex={0}
+          >
             {DATA.projects.map((p) => (
               <ProjectCard key={p.title} project={p} />
             ))}
           </div>
+        </section>
+        {/* Events */}
+        <section id="events" className="py-10 md:py-14">
+          <SectionHeader title="Events I've Organized & Hosted" />
+          <p className="mt-2 max-w-2xl text-sm text-slate-600 dark:text-slate-400">
+            Founder, technology, and community programming I have helped bring to life.
+          </p>
+          {DATA.events.length > 0 ? (
+            <div className="mt-6 grid gap-4 md:grid-cols-2">
+              {DATA.events.map((event) => (
+                <EventCard key={`${event.title}-${event.date}`} event={event} />
+              ))}
+            </div>
+          ) : (
+            <div className="mt-6 rounded-2xl border border-dashed border-slate-300 p-6 text-sm text-slate-500 dark:border-slate-700 dark:text-slate-400">
+              Event details coming soon.
+            </div>
+          )}
         </section>
 
         {/* Articles */}
@@ -470,9 +518,9 @@ function LongCard({ logo, title, subtitle, rightTag, body, link }: { logo?: stri
 
 function ProjectCard({ project }: { project: { title: string; blurb: string; tech: string[]; links: { live?: string; repo?: string }; logo?: string } }) {
   return (
-    <motion.article initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.4 }} className="group relative rounded-3xl border border-slate-200 bg-white p-5 shadow-sm ring-1 ring-transparent hover:ring-red-200 dark:border-slate-800 dark:bg-slate-900 dark:hover:ring-red-900/40">
-      <h3 className="mt-4 font-display text-lg font-semibold">{project.title}</h3>
-      <p className="mt-1 text-sm text-slate-600 dark:text-slate-300">{project.blurb}</p>
+    <motion.article initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-50px" }} transition={{ duration: 0.4 }} className="group relative flex min-h-[310px] w-[85vw] max-w-[360px] shrink-0 snap-start flex-col rounded-3xl border border-slate-200 bg-white p-5 shadow-sm ring-1 ring-transparent hover:ring-red-200 dark:border-slate-800 dark:bg-slate-900 dark:hover:ring-red-900/40 sm:w-[360px]">
+      <h3 className="font-display text-lg font-semibold leading-snug">{project.title}</h3>
+      <p className="mt-3 flex-1 text-sm leading-6 text-slate-600 dark:text-slate-300">{project.blurb}</p>
       <div className="mt-3 flex flex-wrap gap-2">
         {project.tech.map((t) => (
           <span key={t} className="rounded-full bg-slate-100 px-2.5 py-1 text-xs dark:bg-slate-800">{t}</span>
@@ -480,13 +528,48 @@ function ProjectCard({ project }: { project: { title: string; blurb: string; tec
       </div>
       <div className="mt-4 flex items-center gap-3 text-sm">
         {project.links.live && (
-          <a href={project.links.live} className="inline-flex items-center gap-1 rounded-lg border border-slate-200 px-2.5 py-1.5 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"><ExternalLink className="size-4" /> Live</a>
+          <a href={project.links.live} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 rounded-lg border border-slate-200 px-2.5 py-1.5 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"><ExternalLink className="size-4" /> Live</a>
         )}
         {project.links.repo && (
-          <a href={project.links.repo} className="inline-flex items-center gap-1 rounded-lg border border-slate-200 px-2.5 py-1.5 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"><Github className="size-4" /> Code</a>
+          <a href={project.links.repo} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 rounded-lg border border-slate-200 px-2.5 py-1.5 hover:bg-slate-50 dark:border-slate-700 dark:hover:bg-slate-800"><Github className="size-4" /> Code</a>
         )}
       </div>
       {project.logo && <img src={project.logo} alt="logo" className="absolute bottom-3 right-3 h-7 w-7 object-contain opacity-80 rounded" />}
     </motion.article>
+  );
+}
+
+function EventCard({ event }: { event: HostedEvent }) {
+  return (
+    <article className="rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-slate-800 dark:bg-slate-900">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+        <div>
+          <h3 className="font-display text-xl font-semibold">{event.title}</h3>
+          <p className="mt-1 text-sm font-medium text-red-700 dark:text-red-400">{event.role}</p>
+        </div>
+        <span className="inline-flex shrink-0 items-center gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+          <CalendarDays className="size-3.5" />
+          {event.date}
+        </span>
+      </div>
+      <p className="mt-4 text-sm leading-6 text-slate-700 dark:text-slate-300">{event.description}</p>
+      <div className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-xs text-slate-500 dark:text-slate-400">
+        <span className="inline-flex items-center gap-1.5">
+          <MapPin className="size-3.5" />
+          {event.location}
+        </span>
+        {event.collaborators && event.collaborators.length > 0 && (
+          <span className="inline-flex items-center gap-1.5">
+            <Users className="size-3.5" />
+            {event.collaborators.join(", ")}
+          </span>
+        )}
+      </div>
+      {event.link && (
+        <a href={event.link} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-1 text-sm text-red-700 hover:opacity-80 dark:text-red-400">
+          View event <ExternalLink className="size-3.5" />
+        </a>
+      )}
+    </article>
   );
 }
