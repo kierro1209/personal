@@ -113,10 +113,10 @@ const DATA = {
       links: { live: "https://app.greenopia.com/discover/", repo: "" },
       logo: asset("/logos/greenopia.png"), // small assoc logo bottom-right (optional)
     },
-    {
+   {
       title: "Genetic Pathogencity Classifier",
       blurb:
-        "Work in Progress Using open source genetic data to classify possible expression levels.",
+        "Used 7M+ classified genetic variants for pathogenic gene expressions and trained a XGBoost model to classify a new gene's pathogenicity risk.",
       tech: ["Python", "RandomForest", "ClinVar", "React"],
       
       links: { live: "", repo: "https://github.com/kierro1209/genetic_variant_classifier" },
@@ -185,8 +185,15 @@ const DATA = {
       tech: [ "FastAPI", "GTFS"],
       links: { live: "", repo: "" },
       logo: ''
+    },
+    {
+      title: "Agentic Memory Gating and Tone Matching",
+      blurb:
+        "WIP. Trying to prevent irrelevant memories from being injected into responses from your agents.",
+      tech: [ "Python", "Pydantic", "Chroma"],
+      links: { live: "", repo: "" },
+      logo: ''
     }
-
   ],
   // Events organized or hosted.
   // Add entries using this shape:
