@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -10,21 +10,33 @@ permissions:
   pages: write
   id-token: write
 
+# Only one Pages deployment at a time. Newer runs queue behind the active one
+# instead of failing with "Deployment request failed ... due to in progress deployment".
+# cancel-in-progress is false so an in-flight deployment is never killed mid-publish
+# (GitHub only keeps the latest queued run, so stale runs are dropped automatically).
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
     defaults:
-       run:
+      run:
         working-directory: my-portfolio
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm install              # <-- use install (not ci) if no lockfile
-      - run: npm run build            # must exist in package.json ("build": "vite build")
+          cache: npm
+          cache-dependency-path: my-portfolio/package-lock.json
+      - run: npm ci
+      - run: npm run build
       - uses: actions/upload-pages-artifact@v3
-        with: { path: my-portfolio/dist }                
+        with:
+          path: my-portfolio/dist
+
   deploy:
     needs: build
     runs-on: ubuntu-latest
