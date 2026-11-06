@@ -43,7 +43,7 @@ const DATA = {
       school: "University of California, Los Angeles",
       degree: "B.S. Statistics & Data Science (Minors: Data Science Engineering, Bioinformatics)",
       time: "2024 – 2028 ",
-      details: "GPA 3.85. Coursework: Linear Algebra, SQL, Data Structures and Algorithms, OOP (Java/C++/Python), R programming, Regression and Modelling Techniques, ML Methods, Computational Genomics, Theoretical Statistics, Experimental Design",
+      details: "GPA 3.85. Coursework: Fundamental of ML, Linear Algebra, SQL, Data Structures and Algorithms, OOP (Java/C++/Python), R programming, Regression and Modelling Techniques, ML Methods, Computational Genomics, Theoretical Statistics, Experimental Design",
     },
   ],
   // Experience entries
@@ -53,7 +53,7 @@ const DATA = {
       title: "Data Engineering Intern",
       org: "AstraZeneca",
       time: "June 2026 – Present",
-      details: "Working under the Cell Thereapy Technical Operations division to analyze supply chain routing, performance, distribution, and network data to support efficient and effective patient care.",
+      details: "Working under the Cell Thereapy Technical Operations division to analyze supply chain routing, performance, distribution, and network data to support efficient and effective patient care. Curretly, I'm helping to modernize our batch record process and improving shipment management through predictive modelling to ensure patients & manufacturing sites can effectively work on time-sensitive and life-saving treatments.",
     },
     {
       logo: asset("/logos/greenopia.png"),
@@ -66,14 +66,14 @@ const DATA = {
       title: "President of VEST // Marketing Director",
       org: "VEST @ UCLA",
       time: "Jan 2025 – Present",
-      details: "Lead UCLA's premier tech-focused entreprenuership club, securing sponsorships with YC-backed companies and maintaining VC relationships with major firms to help fund UCLA student founders. I plan events in partnership with other companies, VCs, and entrepreneurship orgs as well as direct recruitment, internal programming, and leadership. As marketing director, I grew our views to over 117k+ and collaborated with our design team to create a brand kit. Prev Patnerships: Cognition, Manus (acquired by Meta), Codex, KP Fellows, EF, Upfront, a16z, Notable Captial, ZFellows, Happenstance AI, Julius AI, BCV",
+      details: "Leading UCLA's premier tech-focused entreprenuership club, securing sponsorships with YC-backed companies and maintaining VC relationships with major firms to help fund UCLA student founders. I plan events in partnership with other companies, VCs, and entrepreneurship orgs as well as direct recruitment, internal programming, and leadership. As marketing director, I grew our views to over 117k+ and collaborated with our design team to create a brand kit. Prev Patnerships: Cognition, Manus (acquired by Meta), Codex, KP Fellows, EF, Upfront, a16z, Notable Captial, ZFellows, Happenstance AI, Julius AI, BCV",
     },
     {
       logo: asset("/logos/dsu-logo.png"),
       title: "Data Analyst Consultant",
       org: "Data Science Union",
       time: "Mar 2025 – Present",
-      details: "Built part of production pipeline for Michelin Connected Fleet's braking intelligence system, reducing individual reporting times by 20%. Leading Benchmarking research project to evaluate Jev on context engineering tasks.",
+      details: "Built part of production pipeline for Michelin Connected Fleet's braking intelligence system, reducing individual reporting times by 20%. Leading Benchmarking research project to evaluate Jev on context engineering tasks using an adapted version of LongMemEval and a custom adapter to support testing on current LLMs and Jev's novel primitive types.",
     },
     {
       logo: asset("/logos/bhc.png"),
@@ -248,7 +248,7 @@ const COMMUNITY_PHOTOS: { src: string; event: string }[] = [
   { src: "/community/img-7744.jpg", event: "builders-lounge" },
   { src: "/community/img-7748.jpg", event: "builders-lounge" },
   { src: "/community/img-7768.jpg", event: "builders-lounge" },
-  { src: "/community/img-7833.jpg", event: "vest-collab-currency" },
+  { src: "/community/img-7833.jpg", event: "vest-collab-currency-dinner" },
 ];
 
 const AGENTIC_MEMORY_TITLE = "Agentic Memory Gating and Tone Matching";
@@ -412,13 +412,16 @@ export default function Portfolio() {
           <h1 className="font-header text-5xl md:text-6xl">About</h1>
           <Rule />
           {/* Full width of the page: photo hugs the right edge, text column grows to follow */}
-          <div className="mt-6 grid items-start gap-8 md:grid-cols-[minmax(0,1fr)_18rem] lg:gap-16">
+          <div className="mt-6 grid items-stretch gap-8 md:grid-cols-[minmax(0,1fr)_18rem] lg:gap-16">
             <div className="max-w-3xl">
               <p className="text-neutral-500 dark:text-neutral-400">{DATA.title} &middot; {DATA.location}</p>
               <p className="mt-4 leading-7 text-neutral-500 dark:text-neutral-400">{DATA.bio}</p>
               <p className="mt-4 leading-7 text-neutral-500 dark:text-neutral-400">{DATA.aboutParagraph}</p>
             </div>
-            <img src={asset("/about.jpg")} alt="Kiersten Roth" className="block h-auto w-full max-w-[18rem] md:max-w-none" />
+            {/* Photo stretches to the same height as the text beside it (cropped to fit) */}
+            <div className="relative aspect-[4/5] w-full max-w-[18rem] md:aspect-auto md:h-full md:max-w-none">
+              <img src={asset("/about.jpg")} alt="Kiersten Roth" className="absolute inset-0 h-full w-full object-cover" />
+            </div>
           </div>
         </header>
 
